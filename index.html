@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mamoshi Kitchen - Fresh Sushi & Gourmet Burgers</title>
-    <meta name="description" content="Mamoshi Kitchen offers fresh sushi and gourmet burgers made with locally sourced ingredients. Order online for delivery or pickup.">
+    <title>Mamoshi Kitchen - Authentic Kenyan Street Food & Smochas</title>
+    <meta name="description" content="Experience authentic Kenyan street food - Smochas, Mutura, Chips Mwitu, and more. Fresh, affordable, and delivered fast in Nairobi.">
+    <meta name="keywords" content="kenyan street food, smocha, mutura, chips mwitu, nairobi food delivery, affordable food">
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/sushi.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5787/5787016.png">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Mamoshi Kitchen - Authentic Kenyan Street Food">
+    <meta property="og:description" content="Best Smochas & Street Food in Nairobi">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38">
+    <meta property="og:url" content="https://mamoshikitchen.co.ke">
 </head>
 <body>
     <!-- Navigation -->
@@ -18,7 +31,7 @@
         <div class="container">
             <div class="nav-container">
                 <a href="#" class="logo">
-                    <span class="logo-icon">🍣</span>
+                    <span class="logo-icon">🇰🇪</span>
                     <span class="logo-text">Mamoshi<span class="logo-highlight">Kitchen</span></span>
                 </a>
                 
@@ -29,292 +42,407 @@
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#menu" class="nav-link">Menu</a></li>
+                    <li><a href="#order" class="nav-link">Order</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="#" class="order-btn nav-order">Order Now <span class="price-tag">$5.00</span></a></li>
+                    <li>
+                        <a href="#" class="order-btn nav-order" id="cartButton">
+                            <i class="fas fa-shopping-cart"></i> 
+                            <span class="cart-count">0</span>
+                            <span class="cart-total">Ksh 0</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+            <button class="cart-close">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+                <a href="#menu" class="btn-primary">Browse Menu</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-totals">
+                <div class="total-row">
+                    <span>Subtotal</span>
+                    <span class="subtotal">Ksh 0</span>
+                </div>
+                <div class="total-row">
+                    <span>Delivery</span>
+                    <span class="delivery">Ksh 150</span>
+                </div>
+                <div class="total-row grand-total">
+                    <span>Total</span>
+                    <span class="total">Ksh 150</span>
+                </div>
+            </div>
+            <button class="btn-primary checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+            <div class="payment-options">
+                <small>We accept: M-Pesa | Visa | Cash</small>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-tag">Pixelate</div>
-                <h1 class="hero-title">WebDesign <span class="hero-title-food">Food</span></h1>
-                <p class="hero-subtitle">Inspiring Web Design Ideas & Creative Solutions for Food Lovers</p>
-                
-                <div class="hero-cta">
-                    <a href="#menu" class="btn-primary">Explore Menu</a>
-                    <a href="#" class="btn-secondary" id="orderTrigger">Order Online</a>
+                <div class="hero-badge">
+                    <span class="badge">🔥 Hot & Fresh</span>
+                    <span class="badge">🚚 Free Delivery > Ksh 800</span>
                 </div>
                 
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">1500+</span>
-                        <span class="stat-label">Happy Customers</span>
+                <h1 class="hero-title">Taste The <span class="hero-highlight">Real Kenya</span></h1>
+                <h2 class="hero-subtitle">Authentic Street Food & Smochas Made With Passion</h2>
+                <p class="hero-description">From sizzling Smochas to mouthwatering Mutura, we bring Nairobi's best street food right to your doorstep. Fresh ingredients, bold flavors, unbeatable prices.</p>
+                
+                <div class="hero-cta">
+                    <a href="#order" class="btn-primary">
+                        <i class="fas fa-bolt"></i> Order Now
+                    </a>
+                    <a href="#menu" class="btn-secondary">
+                        <i class="fas fa-utensils"></i> View Menu
+                    </a>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>30 Min Delivery</h4>
+                            <p>Githurai & Surrounding</p>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Menu Items</span>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>Hygiene Certified</h4>
+                            <p>100% Clean Kitchen</p>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">30min</span>
-                        <span class="stat-label">Avg. Delivery</span>
+                    <div class="feature">
+                        <i class="fas fa-percentage"></i>
+                        <div>
+                            <h4>Best Prices</h4>
+                            <p>Quality Street Food</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="hero-image">
-                <div class="food-image sushi-image"></div>
-                <div class="food-image burger-image"></div>
+                <div class="food-display">
+                    <img src="https://img-global.cpcdn.com/recipes/ab41384fb980b9e2/640x640sq70/photo.webp" alt="Kenyan Smocha" class="main-food">
+                    <img src="https://img-global.cpcdn.com/recipes/8d1c42f2a6dd363a/640x640sq70/photo.webp" alt="Mutura" class="side-food-1">
+                    <img src="https://img-global.cpcdn.com/recipes/fa130fd7d8f048a8/640x640sq70/photo.webp" alt="Chips Mwitu" class="side-food-2">
+                </div>
             </div>
         </div>
         
+        <!-- WhatsApp Order Button -->
+        <a href="https://wa.me/254746562072?text=Hello%20Mamoshi%20Kitchen!%20I'd%20like%20to%20order%20food" 
+           class="whatsapp-float" target="_blank" aria-label="Order on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span>Order on WhatsApp</span>
+        </a>
+        
+        <!-- Social Sidebar -->
         <div class="social-sidebar">
-            <span class="follow-text">FOLLOW US</span>
+            <span class="follow-text">FOLLOW</span>
             <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-            </div>
-            <div class="follower-count">
-                <i class="fas fa-users"></i>
-                <span id="followers">2.8K</span>
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Sushi Section -->
-    <section class="section sushi-section" id="menu">
+    <!-- Popular Dishes -->
+    <section class="section popular-dishes">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Mamoshi Kitchen</h2>
-                <p class="section-subtitle">Fresh • Traditional • Modern</p>
+                <h2 class="section-title">Most Popular Dishes</h2>
+                <p class="section-subtitle">Customer Favorites • Always Fresh • Authentic Taste</p>
             </div>
             
-            <div class="content-grid">
-                <div class="card sushi-card featured">
-                    <div class="card-badge">Chef's Special</div>
-                    <div class="card-img">
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>4.7 (320 reviews)</span>
+            <div class="dishes-grid" id="popularDishes">
+                <!-- Dishes will be loaded dynamically from JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Menu -->
+    <section class="section menu-section" id="menu">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Our Complete Menu</h2>
+                <p class="section-subtitle">Choose from our variety of authentic Kenyan street food</p>
+                <div class="menu-categories">
+                    <button class="category-btn active" data-category="all">All Items</button>
+                    <button class="category-btn" data-category="smocha">Smochas</button>
+                    <button class="category-btn" data-category="grilled">Grilled</button>
+                    <button class="category-btn" data-category="snacks">Snacks</button>
+                    <button class="category-btn" data-category="drinks">Drinks</button>
+                </div>
+            </div>
+            
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items loaded dynamically -->
+            </div>
+            
+            <div class="menu-note">
+                <div class="note-icon">💡</div>
+                <div class="note-content">
+                    <h4>Pro Tip!</h4>
+                    <p>Add extra kachumbari for Ksh 20 or extra chilli for Ksh 10 to make your meal perfect!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="section order-section" id="order">
+        <div class="container">
+            <div class="order-container">
+                <div class="order-info">
+                    <h2 class="section-title">How to Order</h2>
+                    <div class="order-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Browse & Select</h4>
+                                <p>Choose from our menu and add items to cart</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Customize</h4>
+                                <p>Add extras, specify preferences</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Checkout</h4>
+                                <p>Pay via M-Pesa or cash on delivery</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Enjoy!</h4>
+                                <p>Hot food delivered in 30-45 minutes</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h3 class="card-title">SLISHJ <span class="fresh-tag">Made FRESH Always</span></h3>
-                        <p class="card-text">Experience authentic Japanese flavors with our handcrafted sushi. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquam erat volutpat.</p>
-                        
-                        <div class="card-features">
-                            <div class="feature">
-                                <i class="fas fa-fish"></i>
-                                <span>Fresh Daily</span>
+                    
+                    <div class="delivery-info">
+                        <h4>Delivery Zones & Times</h4>
+                        <div class="delivery-zones">
+                            <div class="zone">
+                                <i class="fas fa-motorcycle"></i>
+                                <div>
+                                    <h5>Githurai Area</h5>
+                                    <p>Free delivery for orders above Ksh 800</p>
+                                </div>
+                                <span class="zone-time">30-45 min</span>
                             </div>
-                            <div class="feature">
-                                <i class="fas fa-leaf"></i>
-                                <span>Organic Ingredients</span>
+                            <div class="zone">
+                                <i class="fas fa-car"></i>
+                                <div>
+                                    <h5>Surrounding Estates</h5>
+                                    <p>Kahawa, Roysambu, Zimmerman</p>
+                                </div>
+                                <span class="zone-time">45-60 min</span>
                             </div>
-                            <div class="feature">
-                                <i class="fas fa-clock"></i>
-                                <span>15min Prep</span>
-                            </div>
-                        </div>
-                        
-                        <div class="card-footer">
-                            <div class="price">
-                                <span class="price-from">From</span>
-                                <span class="price-amount">$12.99</span>
-                            </div>
-                            <a href="#" class="btn-primary card-btn">
-                                <i class="fas fa-shopping-cart"></i> ORDER SUSHI
-                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="sushi-gallery">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Sushi Platter">
-                        <div class="gallery-overlay">
-                            <span>Nigiri Selection</span>
-                        </div>
+                <div class="order-form-container">
+                    <div class="order-form">
+                        <h3>Quick Order Form</h3>
+                        <form id="quickOrderForm">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                                <input type="text" id="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                                <input type="tel" id="phone" placeholder="07XX XXX XXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="location"><i class="fas fa-map-marker-alt"></i> Delivery Location</label>
+                                <input type="text" id="location" placeholder="E.g., Githurai 44, House No." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="orderDetails"><i class="fas fa-utensils"></i> What would you like?</label>
+                                <textarea id="orderDetails" placeholder="E.g., 2 Smochas, 1 Mutura, extra chilli..." rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-clock"></i> Preferred Time</label>
+                                <div class="time-options">
+                                    <label class="time-option">
+                                        <input type="radio" name="time" value="asap" checked>
+                                        <span>ASAP (30-45 min)</span>
+                                    </label>
+                                    <label class="time-option">
+                                        <input type="radio" name="time" value="later">
+                                        <span>Schedule for later</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary submit-order">
+                                <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+                            </button>
+                            <p class="form-note">We'll confirm your order and send M-Pesa details</p>
+                        </form>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1563612116624-8d34e2d0c4c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Sashimi">
-                        <div class="gallery-overlay">
-                            <span>Fresh Sashimi</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1617196034183-421b4897b7c6?ixlib=rb-1.2.1&auto=format&fit=crop&w-300&q=80" alt="Maki Rolls">
-                        <div class="gallery-overlay">
-                            <span>Maki Rolls</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="menu-note">
-                <div class="note-icon">⚠️</div>
-                <div class="note-content">
-                    <p><strong>IMAGES NOT INCLUDED</strong></p>
-                    <p>Mamoshi Kitchen Restaurant Landing Page - Creative Market Design Implementation</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Burger Section -->
-    <section class="section burger-section">
+    <!-- Testimonials -->
+    <section class="section testimonials-section">
         <div class="container">
             <div class="section-header center">
-                <h2 class="section-title">FLAVOURFUL MOMENTS</h2>
-                <p class="section-subtitle">AT OUR BURGER HAVEN</p>
-                <div class="section-divider"></div>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from satisfied food lovers</p>
             </div>
             
-            <div class="burger-content">
-                <div class="burger-card">
-                    <div class="burger-image">
-                        <div class="burger-badge">Best Seller</div>
-                    </div>
-                    <div class="burger-details">
-                        <p class="burger-description">Not just a symphony of flavour is our Burger Haven, where every bite is a joyful experience. Many ingredients are sourced locally for quality and freshness.</p>
-                        <p class="burger-quote">"Passionately crafting burgers that redefine fast food."</p>
-                        
-                        <div class="burger-signatures">
-                            <div class="signature">
-                                <div class="signature-name">Chairman</div>
-                                <div class="signature-title">Vic Mark</div>
-                            </div>
-                            <div class="signature">
-                                <div class="signature-name">Head Chef</div>
-                                <div class="signature-title">Mr. Khalil</div>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Best smochas in Nairobi! The meat is always fresh and well-seasoned. Their delivery is super fast even during peak hours."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
+                            <div>
+                                <h4>John Kamau</h4>
+                                <span>Githurai • Regular Customer</span>
                             </div>
                         </div>
-                        
-                        <div class="burger-menu">
-                            <h4>Popular Burgers</h4>
-                            <div class="menu-items">
-                                <div class="menu-item">
-                                    <span class="item-name">Classic Cheese Burger</span>
-                                    <span class="item-price">$9.99</span>
-                                </div>
-                                <div class="menu-item">
-                                    <span class="item-name">Spicy Chicken Burger</span>
-                                    <span class="item-price">$11.99</span>
-                                </div>
-                                <div class="menu-item">
-                                    <span class="item-name">Mamoshi Special</span>
-                                    <span class="item-price">$14.99</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="btn-primary burger-btn">
-                            <i class="fas fa-hamburger"></i> VIEW BURGER MENU
-                        </a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="testimonials">
-                <h3 class="testimonials-title">What Our Customers Say</h3>
-                <div class="testimonial-cards">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "Best sushi in town! The quality is exceptional and delivery is always on time."
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                         </div>
+                        <p class="testimonial-text">"Their mutura is legendary! Perfect blend of spices and never greasy. The chips mwitu with extra kachumbari is my weekend treat!"</p>
                         <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
                             <div>
-                                <h4>Sarah Johnson</h4>
-                                <span>Regular Customer</span>
+                                <h4>Sarah Mwende</h4>
+                                <span>Kahawa • Food Blogger</span>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">
-                            "Their burgers are amazing! Juicy, flavorful, and always fresh. Highly recommend!"
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
+                        <p class="testimonial-text">"Affordable prices for such quality food. The samosas are huge and packed with meat. My go-to place for late night cravings!"</p>
                         <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Michael Chen">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Customer">
                             <div>
-                                <h4>Michael Chen</h4>
-                                <span>Food Blogger</span>
+                                <h4>David Ochieng</h4>
+                                <span>Roysambu • Student</span>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact & Location -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3 class="contact-title">Visit Our Restaurant</h3>
+                    <h2 class="section-title">Visit Our Kitchen</h2>
+                    
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>Location</h4>
-                                <p>123 Food Street, Culinary District<br>New York, NY 10001</p>
+                                <p>Githurai 44, Kamiti Road<br>Opposite Naivas Supermarket<br>Nairobi, Kenya</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
                             <div>
                                 <h4>Opening Hours</h4>
-                                <p>Mon-Thu: 11AM - 10PM<br>Fri-Sun: 11AM - 11PM</p>
+                                <p><strong>Mon-Thu:</strong> 10:00 AM - 10:00 PM<br>
+                                   <strong>Fri-Sun:</strong> 10:00 AM - 11:00 PM<br>
+                                   <strong>Holidays:</strong> 12:00 PM - 10:00 PM</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
                             <div>
-                                <h4>Contact</h4>
-                                <p>(123) 456-7890<br>hello@mamoshikitchen.com</p>
+                                <h4>Contact Us</h4>
+                                <p><strong>Phone:</strong> +254 746 562 072<br>
+                                   <strong>WhatsApp:</strong> +254 746 562 072<br>
+                                   <strong>Email:</strong> orders@mamoshikitchen.co.ke</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="newsletter">
-                        <h4>Subscribe to Our Newsletter</h4>
-                        <p>Get updates on new menu items and special offers</p>
-                        <form class="newsletter-form" id="newsletterForm">
-                            <input type="email" placeholder="Your email address" required>
-                            <button type="submit" class="btn-primary">Subscribe</button>
-                        </form>
+                    <div class="contact-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3 class="contact-title">Reserve a Table</h3>
-                    <form id="reservationForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                            <input type="email" placeholder="Email Address" required>
+                <div class="contact-map">
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h4>Githurai 44 Location</h4>
+                            <p>Opposite Naivas Supermarket<br>Easy to find, ample parking</p>
+                            <a href="https://maps.google.com/?q=Githurai+44+Nairobi" target="_blank" class="btn-secondary">
+                                <i class="fas fa-directions"></i> Get Directions
+                            </a>
                         </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Phone Number" required>
-                            <input type="number" placeholder="Number of Guests" min="1" max="20" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="date" required>
-                            <input type="time" required>
-                        </div>
-                        <textarea placeholder="Special Requests (Optional)" rows="4"></textarea>
-                        <button type="submit" class="btn-primary">Make Reservation</button>
-                    </form>
+                        <!-- In production, replace with actual Google Maps embed -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -326,48 +454,76 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <span class="logo-icon">🍣</span>
+                        <span class="logo-icon">🇰🇪</span>
                         <span class="logo-text">Mamoshi<span class="logo-highlight">Kitchen</span></span>
                     </a>
-                    <p class="footer-description">Fresh sushi and gourmet burgers made with passion and the finest ingredients.</p>
+                    <p class="footer-description">Bringing authentic Kenyan street food to your doorstep since 2020. Fresh ingredients, bold flavors, unforgettable taste.</p>
                     <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
                     <div class="link-group">
-                        <h4>Menu</h4>
+                        <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#">Sushi Menu</a></li>
-                            <li><a href="#">Burger Menu</a></li>
-                            <li><a href="#">Appetizers</a></li>
-                            <li><a href="#">Desserts</a></li>
-                            <li><a href="#">Drinks</a></li>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#menu">Menu</a></li>
+                            <li><a href="#order">Order Online</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
                     <div class="link-group">
-                        <h4>Company</h4>
+                        <h4>Our Menu</h4>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Press</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Gift Cards</a></li>
+                            <li><a href="#" data-category="smocha">Smochas</a></li>
+                            <li><a href="#" data-category="grilled">Grilled Meat</a></li>
+                            <li><a href="#" data-category="snacks">Snacks</a></li>
+                            <li><a href="#" data-category="drinks">Drinks</a></li>
+                            <li><a href="#">Combos</a></li>
                         </ul>
                     </div>
                     <div class="link-group">
                         <h4>Support</h4>
                         <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">FAQ</a></li>
                             <li><a href="#">Delivery Info</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Careers</a></li>
                         </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Get exclusive offers and new menu updates</p>
+                    <form class="newsletter-form" id="footerNewsletter">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="app-links">
+                        <p>Download Our App</p>
+                        <div class="app-buttons">
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-google-play"></i>
+                                <div>
+                                    <small>GET IT ON</small>
+                                    <span>Google Play</span>
+                                </div>
+                            </a>
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-apple"></i>
+                                <div>
+                                    <small>Download on</small>
+                                    <span>App Store</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -375,41 +531,40 @@
             <div class="footer-bottom">
                 <div class="payment-methods">
                     <span>We accept:</span>
-                    <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
-                    <i class="fab fa-cc-amex"></i>
-                    <i class="fab fa-cc-paypal"></i>
-                    <i class="fab fa-cc-apple-pay"></i>
+                    <i class="fab fa-cc-mpesa" title="M-Pesa"></i>
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fas fa-money-bill-wave" title="Cash"></i>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 2024 Mamoshi Kitchen. All rights reserved. | Designed with <i class="fas fa-heart"></i> by Benson</p>
-                    <p class="portfolio-link">Portfolio: <a href="https://benson-portfolio-flame.vercel.app" target="_blank">benson-portfolio-flame.vercel.app</a></p>
+                    <p>&copy; 2024 Mamoshi Kitchen. All rights reserved. | Crafted with <i class="fas fa-heart"></i> in Nairobi kenya</p>
+                    <p class="portfolio-link">Developer: <a href="https://benson-portfolio-flame.vercel.app" target="_blank"></a></p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Order Modal -->
-    <div class="modal" id="orderModal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <h3 class="modal-title">Order Online</h3>
-            <div class="modal-body">
-                <div class="order-options">
-                    <div class="order-option">
-                        <i class="fas fa-shopping-bag"></i>
-                        <h4>Pickup</h4>
-                        <p>Order online and pick up at our restaurant</p>
-                        <button class="btn-primary">Order for Pickup</button>
-                    </div>
-                    <div class="order-option">
-                        <i class="fas fa-motorcycle"></i>
-                        <h4>Delivery</h4>
-                        <p>Get your favorite food delivered to your door</p>
-                        <button class="btn-primary">Order Delivery</button>
-                    </div>
-                </div>
+    <!-- Order Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">🎉</div>
+            <h3>Order Received!</h3>
+            <p>Thank you for your order! We'll contact you shortly to confirm details and provide M-Pesa payment information.</p>
+            <div class="order-summary" id="orderSummary">
+                <!-- Order summary will be shown here -->
             </div>
+            <button class="btn-primary close-success">Continue Shopping</button>
+            <a href="https://wa.me/254746562072" target="_blank" class="btn-secondary">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Preparing your delicious food...</p>
         </div>
     </div>
 
