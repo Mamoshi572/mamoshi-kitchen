@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mamoshi Kitchen - Authentic Kenyan Street Food & Smochas</title>
+    <title>Ashen Bites | Authentic Kenyan Street Food & Smochas</title>
     <meta name="description" content="Experience authentic Kenyan street food - Smochas, Mutura, Chips Mwitu, and more. Fresh, affordable, and delivered fast in Nairobi.">
     <meta name="keywords" content="kenyan street food, smocha, mutura, chips mwitu, nairobi food delivery, affordable food">
     
@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Beautiful Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -20,10 +21,10 @@
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5787/5787016.png">
     
     <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Mamoshi Kitchen - Authentic Kenyan Street Food">
+    <meta property="og:title" content="Ashen Bites - Authentic Kenyan Street Food">
     <meta property="og:description" content="Best Smochas & Street Food in Nairobi">
     <meta property="og:image" content="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38">
-    <meta property="og:url" content="https://mamoshikitchen.co.ke">
+    <meta property="og:url" content="https://ashenbites.co.ke">
 </head>
 <body>
     <!-- Navigation -->
@@ -31,8 +32,8 @@
         <div class="container">
             <div class="nav-container">
                 <a href="#" class="logo">
-                    <span class="logo-icon">🇰🇪</span>
-                    <span class="logo-text">Mamoshi<span class="logo-highlight">Kitchen</span></span>
+                    <span class="logo-icon">🍴</span>
+                    <span class="logo-text">Ashen<span class="logo-highlight">Bites</span></span>
                 </a>
                 
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
@@ -40,11 +41,11 @@
                 </button>
                 
                 <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#menu" class="nav-link">Menu</a></li>
-                    <li><a href="#order" class="nav-link">Order</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#menu" class="nav-link"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="#order" class="nav-link"><i class="fas fa-shopping-cart"></i> Order</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
                     <li>
                         <a href="#" class="order-btn nav-order" id="cartButton">
                             <i class="fas fa-shopping-cart"></i> 
@@ -86,9 +87,11 @@
                     <span class="total">Ksh 150</span>
                 </div>
             </div>
-            <button class="btn-primary checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+            <button class="btn-primary checkout-btn" id="checkoutBtn">
+                <i class="fas fa-lock"></i> Proceed to Checkout
+            </button>
             <div class="payment-options">
-                <small>We accept: M-Pesa | Visa | Cash</small>
+                <small><i class="fab fa-cc-mpesa"></i> M-Pesa | <i class="fab fa-cc-visa"></i> Visa | <i class="fas fa-money-bill-wave"></i> Cash</small>
             </div>
         </div>
     </div>
@@ -98,86 +101,183 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <span class="badge">🔥 Hot & Fresh</span>
-                    <span class="badge">🚚 Free Delivery > Ksh 800</span>
+                    <span class="badge"><i class="fas fa-fire"></i> Hot & Fresh</span>
+                    <span class="badge"><i class="fas fa-shipping-fast"></i> Free Delivery > Ksh 800</span>
                 </div>
                 
-                <h1 class="hero-title">Taste The <span class="hero-highlight">Real Kenya</span></h1>
-                <h2 class="hero-subtitle">Authentic Street Food & Smochas Made With Passion</h2>
-                <p class="hero-description">From sizzling Smochas to mouthwatering Mutura, we bring Nairobi's best street food right to your doorstep. Fresh ingredients, bold flavors, unbeatable prices.</p>
+                <h1 class="hero-title">Savor the <span class="hero-highlight">Authentic Taste</span> of Kenya</h1>
+                <h2 class="hero-subtitle">Where Tradition Meets Flavor in Every Bite</h2>
+                <p class="hero-description">Experience the rich culinary heritage of Kenya through our handcrafted street food. From sizzling Smochas to mouthwatering Mutura, each dish tells a story of tradition, passion, and unforgettable taste.</p>
                 
                 <div class="hero-cta">
-                    <a href="#order" class="btn-primary">
+                    <a href="#order" class="btn-primary btn-glow">
                         <i class="fas fa-bolt"></i> Order Now
                     </a>
                     <a href="#menu" class="btn-secondary">
-                        <i class="fas fa-utensils"></i> View Menu
+                        <i class="fas fa-book-open"></i> Explore Menu
                     </a>
                 </div>
                 
                 <div class="hero-features">
                     <div class="feature">
-                        <i class="fas fa-clock"></i>
-                        <div>
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="feature-content">
                             <h4>30 Min Delivery</h4>
-                            <p>Githurai & Surrounding</p>
+                            <p>Fast & Reliable Service</p>
                         </div>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <div>
-                            <h4>Hygiene Certified</h4>
-                            <p>100% Clean Kitchen</p>
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Fresh Ingredients</h4>
+                            <p>100% Natural & Local</p>
                         </div>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-percentage"></i>
-                        <div>
-                            <h4>Best Prices</h4>
-                            <p>Quality Street Food</p>
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Award Winning</h4>
+                            <p>Best Street Food 2024</p>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="hero-image">
-                <div class="food-display">
-                    <img src="https://img-global.cpcdn.com/recipes/ab41384fb980b9e2/640x640sq70/photo.webp" alt="Kenyan Smocha" class="main-food">
-                    <img src="https://img-global.cpcdn.com/recipes/8d1c42f2a6dd363a/640x640sq70/photo.webp" alt="Mutura" class="side-food-1">
-                    <img src="https://img-global.cpcdn.com/recipes/fa130fd7d8f048a8/640x640sq70/photo.webp" alt="Chips Mwitu" class="side-food-2">
+                <div class="hero-image-container">
+                    <div class="image-main">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Authentic Kenyan Food" class="main-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <i class="fas fa-star"></i>
+                                <span>4.9/5 Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-grid">
+                        <div class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Smocha">
+                            <span>Smocha</span>
+                        </div>
+                        <div class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Mutura">
+                            <span>Mutura</span>
+                        </div>
+                        <div class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Chips">
+                            <span>Chips Mwitu</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        
         <!-- WhatsApp Order Button -->
-        <a href="https://wa.me/254746562072?text=Hello%20Mamoshi%20Kitchen!%20I'd%20like%20to%20order%20food" 
+        <a href="https://wa.me/254746562072?text=Hello%20Ashen%20Bites!%20I'd%20like%20to%20order%20food" 
            class="whatsapp-float" target="_blank" aria-label="Order on WhatsApp">
             <i class="fab fa-whatsapp"></i>
-            <span>Order on WhatsApp</span>
+            <span>Order Now</span>
         </a>
         
         <!-- Social Sidebar -->
         <div class="social-sidebar">
-            <span class="follow-text">FOLLOW</span>
+            <span class="follow-text">Follow Us</span>
             <div class="social-icons">
-                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Popular Dishes -->
-    <section class="section popular-dishes">
+    <!-- Signature Dishes -->
+    <section class="section signature-dishes">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Most Popular Dishes</h2>
-                <p class="section-subtitle">Customer Favorites • Always Fresh • Authentic Taste</p>
+                <h2 class="section-title">Our Signature Creations</h2>
+                <p class="section-subtitle">Chef's Special • Traditional Recipes • Modern Presentation</p>
             </div>
             
-            <div class="dishes-grid" id="popularDishes">
-                <!-- Dishes will be loaded dynamically from JavaScript -->
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Classic Smocha">
+                        <div class="dish-tag">Best Seller</div>
+                    </div>
+                    <div class="dish-content">
+                        <h3 class="dish-title">Classic Smocha Deluxe</h3>
+                        <p class="dish-description">Minced meat perfectly seasoned with traditional spices, served with freshly made chapati.</p>
+                        <div class="dish-footer">
+                            <div class="dish-price">
+                                <span class="price">Ksh 150</span>
+                                <span class="original-price">Ksh 180</span>
+                            </div>
+                            <button class="btn-add" data-id="1">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dish-card featured">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Premium Mutura">
+                        <div class="dish-tag">Premium</div>
+                    </div>
+                    <div class="dish-content">
+                        <h3 class="dish-title">Premium Mutura Feast</h3>
+                        <p class="dish-description">Traditional blood sausage with special herbs, grilled to perfection with kachumbari.</p>
+                        <div class="dish-footer">
+                            <div class="dish-price">
+                                <span class="price">Ksh 250</span>
+                                <span class="original-price">Ksh 300</span>
+                            </div>
+                            <button class="btn-add" data-id="2">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dish-card">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Chips Mwitu">
+                        <div class="dish-tag">Vegetarian</div>
+                    </div>
+                    <div class="dish-content">
+                        <h3 class="dish-title">Chips Mwitu Special</h3>
+                        <p class="dish-description">Crispy fries with beef stew, fresh vegetables, and our secret sauce blend.</p>
+                        <div class="dish-footer">
+                            <div class="dish-price">
+                                <span class="price">Ksh 350</span>
+                                <span class="original-price">Ksh 400</span>
+                            </div>
+                            <button class="btn-add" data-id="3">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -186,14 +286,24 @@
     <section class="section menu-section" id="menu">
         <div class="container">
             <div class="section-header center">
-                <h2 class="section-title">Our Complete Menu</h2>
-                <p class="section-subtitle">Choose from our variety of authentic Kenyan street food</p>
+                <h2 class="section-title">Curated Menu Collection</h2>
+                <p class="section-subtitle">Explore our diverse selection of authentic Kenyan delicacies</p>
                 <div class="menu-categories">
-                    <button class="category-btn active" data-category="all">All Items</button>
-                    <button class="category-btn" data-category="smocha">Smochas</button>
-                    <button class="category-btn" data-category="grilled">Grilled</button>
-                    <button class="category-btn" data-category="snacks">Snacks</button>
-                    <button class="category-btn" data-category="drinks">Drinks</button>
+                    <button class="category-btn active" data-category="all">
+                        <i class="fas fa-th"></i> All
+                    </button>
+                    <button class="category-btn" data-category="smocha">
+                        <i class="fas fa-fire"></i> Smochas
+                    </button>
+                    <button class="category-btn" data-category="grilled">
+                        <i class="fas fa-drumstick-bite"></i> Grilled
+                    </button>
+                    <button class="category-btn" data-category="snacks">
+                        <i class="fas fa-cookie-bite"></i> Snacks
+                    </button>
+                    <button class="category-btn" data-category="drinks">
+                        <i class="fas fa-glass-whiskey"></i> Drinks
+                    </button>
                 </div>
             </div>
             
@@ -201,115 +311,133 @@
                 <!-- Menu items loaded dynamically -->
             </div>
             
-            <div class="menu-note">
-                <div class="note-icon">💡</div>
-                <div class="note-content">
-                    <h4>Pro Tip!</h4>
-                    <p>Add extra kachumbari for Ksh 20 or extra chilli for Ksh 10 to make your meal perfect!</p>
+            <div class="menu-promo">
+                <div class="promo-content">
+                    <h3><i class="fas fa-gift"></i> Special Offer!</h3>
+                    <p>Order 3 or more items and get 15% off your total bill + free delivery!</p>
+                    <a href="#order" class="btn-primary">Claim Offer</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Order Section -->
-    <section class="section order-section" id="order">
+    <!-- Order Process -->
+    <section class="section order-process" id="order">
         <div class="container">
-            <div class="order-container">
-                <div class="order-info">
-                    <h2 class="section-title">How to Order</h2>
-                    <div class="order-steps">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h4>Browse & Select</h4>
-                                <p>Choose from our menu and add items to cart</p>
-                            </div>
+            <div class="section-header center">
+                <h2 class="section-title">Easy Order Process</h2>
+                <p class="section-subtitle">Three simple steps to delicious food at your doorstep</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">
+                        <span>1</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h4>Customize</h4>
-                                <p>Add extras, specify preferences</p>
-                            </div>
+                        <h3>Browse & Select</h3>
+                        <p>Choose from our curated menu and add items to your cart</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">
+                        <span>2</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-wallet"></i>
                         </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h4>Checkout</h4>
-                                <p>Pay via M-Pesa or cash on delivery</p>
-                            </div>
+                        <h3>Secure Payment</h3>
+                        <p>Pay easily via M-Pesa, credit card, or cash on delivery</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">
+                        <span>3</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-motorcycle"></i>
                         </div>
-                        <div class="step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h4>Enjoy!</h4>
-                                <p>Hot food delivered in 30-45 minutes</p>
-                            </div>
+                        <h3>Fast Delivery</h3>
+                        <p>Enjoy hot, fresh food delivered within 30-45 minutes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- M-Pesa Payment Section -->
+    <section class="section mpesa-section">
+        <div class="container">
+            <div class="mpesa-container">
+                <div class="mpesa-content">
+                    <h2 class="section-title">Secure M-Pesa Payments</h2>
+                    <p class="mpesa-description">Pay safely and conveniently using M-Pesa. Receive instant payment confirmation and order updates via SMS.</p>
+                    
+                    <div class="mpesa-steps">
+                        <div class="mpesa-step">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>1. Select M-Pesa</h4>
+                            <p>Choose M-Pesa as your payment method at checkout</p>
+                        </div>
+                        <div class="mpesa-step">
+                            <i class="fas fa-sms"></i>
+                            <h4>2. Enter Phone</h4>
+                            <p>Enter your M-Pesa registered phone number</p>
+                        </div>
+                        <div class="mpesa-step">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>3. Confirm Payment</h4>
+                            <p>Enter your M-Pesa PIN when prompted</p>
                         </div>
                     </div>
                     
-                    <div class="delivery-info">
-                        <h4>Delivery Zones & Times</h4>
-                        <div class="delivery-zones">
-                            <div class="zone">
-                                <i class="fas fa-motorcycle"></i>
-                                <div>
-                                    <h5>Githurai Area</h5>
-                                    <p>Free delivery for orders above Ksh 800</p>
-                                </div>
-                                <span class="zone-time">30-45 min</span>
-                            </div>
-                            <div class="zone">
-                                <i class="fas fa-car"></i>
-                                <div>
-                                    <h5>Surrounding Estates</h5>
-                                    <p>Kahawa, Roysambu, Zimmerman</p>
-                                </div>
-                                <span class="zone-time">45-60 min</span>
-                            </div>
+                    <div class="mpesa-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>100% Secure Payments</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Instant Confirmation</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headset"></i>
+                            <span>24/7 Support</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="order-form-container">
-                    <div class="order-form">
-                        <h3>Quick Order Form</h3>
-                        <form id="quickOrderForm">
-                            <div class="form-group">
-                                <label for="name"><i class="fas fa-user"></i> Full Name</label>
-                                <input type="text" id="name" placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
-                                <input type="tel" id="phone" placeholder="07XX XXX XXX" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="location"><i class="fas fa-map-marker-alt"></i> Delivery Location</label>
-                                <input type="text" id="location" placeholder="E.g., Githurai 44, House No." required>
-                            </div>
-                            <div class="form-group">
-                                <label for="orderDetails"><i class="fas fa-utensils"></i> What would you like?</label>
-                                <textarea id="orderDetails" placeholder="E.g., 2 Smochas, 1 Mutura, extra chilli..." rows="3" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fas fa-clock"></i> Preferred Time</label>
-                                <div class="time-options">
-                                    <label class="time-option">
-                                        <input type="radio" name="time" value="asap" checked>
-                                        <span>ASAP (30-45 min)</span>
-                                    </label>
-                                    <label class="time-option">
-                                        <input type="radio" name="time" value="later">
-                                        <span>Schedule for later</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn-primary submit-order">
-                                <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
-                            </button>
-                            <p class="form-note">We'll confirm your order and send M-Pesa details</p>
-                        </form>
+                <div class="mpesa-form">
+                    <div class="form-header">
+                        <h3><i class="fab fa-cc-mpesa"></i> M-Pesa Payment</h3>
+                        <p>Complete your payment securely</p>
                     </div>
+                    <form id="mpesaPaymentForm">
+                        <div class="form-group">
+                            <label for="phoneNumber"><i class="fas fa-phone"></i> M-Pesa Phone Number</label>
+                            <input type="tel" id="phoneNumber" placeholder="07XX XXX XXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount"><i class="fas fa-money-bill-wave"></i> Amount to Pay</label>
+                            <div class="amount-display">
+                                <span class="amount-prefix">Ksh</span>
+                                <input type="number" id="amount" value="0" readonly>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-mpesa">
+                            <i class="fab fa-cc-mpesa"></i> Pay with M-Pesa
+                        </button>
+                        <p class="form-note">
+                            <i class="fas fa-info-circle"></i> You'll receive a prompt on your phone to enter your M-Pesa PIN
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -320,129 +448,133 @@
         <div class="container">
             <div class="section-header center">
                 <h2 class="section-title">What Our Customers Say</h2>
-                <p class="section-subtitle">Real reviews from satisfied food lovers</p>
+                <p class="section-subtitle">Real reviews from our food-loving community</p>
             </div>
             
-            <div class="testimonials-slider">
-                <div class="testimonial active">
-                    <div class="testimonial-content">
-                        <div class="rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"Best smochas in Nairobi! The meat is always fresh and well-seasoned. Their delivery is super fast even during peak hours."</p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
-                            <div>
-                                <h4>John Kamau</h4>
-                                <span>Githurai • Regular Customer</span>
-                            </div>
+                        <span class="testimonial-date">2 days ago</span>
+                    </div>
+                    <p class="testimonial-text">"The best street food experience in Nairobi! The smochas are incredibly flavorful and the delivery was faster than expected."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Mwende">
+                        <div>
+                            <h4>Sarah Mwende</h4>
+                            <span>Regular Customer</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <div class="rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <p class="testimonial-text">"Their mutura is legendary! Perfect blend of spices and never greasy. The chips mwitu with extra kachumbari is my weekend treat!"</p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
-                            <div>
-                                <h4>Sarah Mwende</h4>
-                                <span>Kahawa • Food Blogger</span>
-                            </div>
+                        <span class="testimonial-date">1 week ago</span>
+                    </div>
+                    <p class="testimonial-text">"Authentic Kenyan flavors delivered right to my door! The mutura is absolutely legendary. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="David Ochieng">
+                        <div>
+                            <h4>David Ochieng</h4>
+                            <span>Food Blogger</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <div class="rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"Affordable prices for such quality food. The samosas are huge and packed with meat. My go-to place for late night cravings!"</p>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Customer">
-                            <div>
-                                <h4>David Ochieng</h4>
-                                <span>Roysambu • Student</span>
-                            </div>
+                        <span class="testimonial-date">3 days ago</span>
+                    </div>
+                    <p class="testimonial-text">"The M-Pesa payment was super convenient. Food arrived hot and fresh exactly when promised. Will definitely order again!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Grace Wanjiru">
+                        <div>
+                            <h4>Grace Wanjiru</h4>
+                            <span>Student</span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="slider-controls">
-                    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="slider-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Location -->
+    <!-- Contact Section -->
     <section class="section contact-section" id="contact">
         <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">We'd love to hear from you</p>
+            </div>
+            
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h2 class="section-title">Visit Our Kitchen</h2>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
+                    <div class="info-card">
+                        <div class="info-icon">
                             <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Githurai 44, Kamiti Road<br>Opposite Naivas Supermarket<br>Nairobi, Kenya</p>
-                            </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Opening Hours</h4>
-                                <p><strong>Mon-Thu:</strong> 10:00 AM - 10:00 PM<br>
-                                   <strong>Fri-Sun:</strong> 10:00 AM - 11:00 PM<br>
-                                   <strong>Holidays:</strong> 12:00 PM - 10:00 PM</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Contact Us</h4>
-                                <p><strong>Phone:</strong> +254 746 562 072<br>
-                                   <strong>WhatsApp:</strong> +254 746 562 072<br>
-                                   <strong>Email:</strong> orders@mamoshikitchen.co.ke</p>
-                            </div>
+                        <div class="info-content">
+                            <h3>Visit Us</h3>
+                            <p>Githurai 44, Kamiti Road<br>Opposite Naivas Supermarket<br>Nairobi, Kenya</p>
                         </div>
                     </div>
                     
-                    <div class="contact-social">
-                        <h4>Follow Us</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Opening Hours</h3>
+                            <p>Monday - Sunday<br>10:00 AM - 11:00 PM<br>24/7 Delivery Available</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Contact Info</h3>
+                            <p>Phone: +254 746 562 072<br>WhatsApp: +254 746 562 072<br>Email: hello@ashenbites.co.ke</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contact-map">
-                    <div class="map-container">
-                        <div class="map-placeholder">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <h4>Githurai 44 Location</h4>
-                            <p>Opposite Naivas Supermarket<br>Easy to find, ample parking</p>
-                            <a href="https://maps.google.com/?q=Githurai+44+Nairobi" target="_blank" class="btn-secondary">
-                                <i class="fas fa-directions"></i> Get Directions
-                            </a>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <h3>Send us a Message</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
                         </div>
-                        <!-- In production, replace with actual Google Maps embed -->
-                    </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -454,13 +586,13 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <span class="logo-icon">🇰🇪</span>
-                        <span class="logo-text">Mamoshi<span class="logo-highlight">Kitchen</span></span>
+                        <span class="logo-icon">🍴</span>
+                        <span class="logo-text">Ashen<span class="logo-highlight">Bites</span></span>
                     </a>
-                    <p class="footer-description">Bringing authentic Kenyan street food to your doorstep since 2020. Fresh ingredients, bold flavors, unforgettable taste.</p>
+                    <p class="footer-description">Bringing authentic Kenyan street food to your doorstep with passion, quality, and unforgettable flavors.</p>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
@@ -477,16 +609,18 @@
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
+                    
                     <div class="link-group">
                         <h4>Our Menu</h4>
                         <ul>
-                            <li><a href="#" data-category="smocha">Smochas</a></li>
-                            <li><a href="#" data-category="grilled">Grilled Meat</a></li>
-                            <li><a href="#" data-category="snacks">Snacks</a></li>
-                            <li><a href="#" data-category="drinks">Drinks</a></li>
-                            <li><a href="#">Combos</a></li>
+                            <li><a href="#menu">Smochas</a></li>
+                            <li><a href="#menu">Grilled Meat</a></li>
+                            <li><a href="#menu">Snacks</a></li>
+                            <li><a href="#menu">Drinks</a></li>
+                            <li><a href="#menu">Specials</a></li>
                         </ul>
                     </div>
+                    
                     <div class="link-group">
                         <h4>Support</h4>
                         <ul>
@@ -501,27 +635,23 @@
                 
                 <div class="footer-newsletter">
                     <h4>Stay Updated</h4>
-                    <p>Get exclusive offers and new menu updates</p>
-                    <form class="newsletter-form" id="footerNewsletter">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    <p>Subscribe to get exclusive offers and menu updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
-                    <div class="app-links">
+                    <div class="app-download">
                         <p>Download Our App</p>
-                        <div class="app-buttons">
-                            <a href="#" class="app-btn">
+                        <div class="download-buttons">
+                            <a href="#" class="download-btn">
                                 <i class="fab fa-google-play"></i>
-                                <div>
-                                    <small>GET IT ON</small>
-                                    <span>Google Play</span>
-                                </div>
+                                <span>Google Play</span>
                             </a>
-                            <a href="#" class="app-btn">
-                                <i class="fab fa-apple"></i>
-                                <div>
-                                    <small>Download on</small>
-                                    <span>App Store</span>
-                                </div>
+                            <a href="#" class="download-btn">
+                                <i class="fab fa-app-store"></i>
+                                <span>App Store</span>
                             </a>
                         </div>
                     </div>
@@ -530,41 +660,65 @@
             
             <div class="footer-bottom">
                 <div class="payment-methods">
-                    <span>We accept:</span>
+                    <span>We Accept:</span>
                     <i class="fab fa-cc-mpesa" title="M-Pesa"></i>
                     <i class="fab fa-cc-visa" title="Visa"></i>
                     <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
                     <i class="fas fa-money-bill-wave" title="Cash"></i>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 2024 Mamoshi Kitchen. All rights reserved. | Crafted with <i class="fas fa-heart"></i> in Nairobi kenya</p>
-                    <p class="portfolio-link">Developer: <a href="https://benson-portfolio-flame.vercel.app" target="_blank"></a></p>
+                    <p>&copy; 2024 Ashen Bites. All rights reserved. | Crafted with <i class="fas fa-heart"></i> in Nairobi</p>
+                    <p class="developer">
+                        Developed by <a href="https://benson-portfolio-flame.vercel.app" target="_blank">Benson</a>
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Order Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content success-modal">
-            <div class="success-icon">🎉</div>
-            <h3>Order Received!</h3>
-            <p>Thank you for your order! We'll contact you shortly to confirm details and provide M-Pesa payment information.</p>
-            <div class="order-summary" id="orderSummary">
-                <!-- Order summary will be shown here -->
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content payment-modal">
+            <div class="payment-header">
+                <h3><i class="fas fa-lock"></i> Secure Payment</h3>
+                <button class="modal-close">&times;</button>
             </div>
-            <button class="btn-primary close-success">Continue Shopping</button>
-            <a href="https://wa.me/254746562072" target="_blank" class="btn-secondary">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-            </a>
+            <div class="payment-body">
+                <div class="payment-method" id="mpesaMethod">
+                    <div class="method-header">
+                        <i class="fab fa-cc-mpesa"></i>
+                        <div>
+                            <h4>M-Pesa Payment</h4>
+                            <p>Pay with your M-Pesa account</p>
+                        </div>
+                    </div>
+                    <div class="method-form">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="07XX XXX XXX" id="mpesaPhone">
+                        </div>
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <div class="amount-input">
+                                <span>Ksh</span>
+                                <input type="text" id="mpesaAmount" readonly>
+                            </div>
+                        </div>
+                        <button class="btn-primary">
+                            <i class="fas fa-mobile-alt"></i> Pay Now
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loader">
-            <div class="spinner"></div>
-            <p>Preparing your delicious food...</p>
+            <div class="loader-spinner"></div>
+            <p>Processing your order...</p>
         </div>
     </div>
 

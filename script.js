@@ -1,204 +1,101 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize cart
-    let cart = JSON.parse(localStorage.getItem('mamoshiCart')) || [];
-    let currentOrder = [];
-    
-    // Kenyan Street Food Menu Data
-    const menuData = {
-        popular: [
-            {
-                id: 1,
-                name: "Classic Smocha",
-                description: "Fresh minced meat mixed with onions, tomatoes, and secret spices",
-                price: 70,
-                image: "https://img-global.cpcdn.com/recipes/ab41384fb980b9e2/640x640sq70/photo.webp",
-                category: "smocha",
-                rating: 4.8,
-                prepTime: "10 min"
-            },
-            {
-                id: 2,
-                name: "Nyama Choma Special",
-                description: "Grilled goat meat with kachumbari and ugali",
-                price: 450,
-                image: "https://img-global.cpcdn.com/recipes/39a42b3a6034c4f8/640x640sq70/photo.webp",
-                category: "grilled",
-                rating: 4.9,
-                prepTime: "25 min"
-            },
-            {
-                id: 3,
-                name: "Mutura Deluxe",
-                description: "Traditional blood sausage with fresh herbs and spices",
-                price: 150,
-                image: "https://img-global.cpcdn.com/recipes/8d1c42f2a6dd363a/640x640sq70/photo.webp",
-                category: "snacks",
-                rating: 4.7,
-                prepTime: "15 min"
-            },
-            {
-                id: 4,
-                name: "Chips Mwitu",
-                description: "Crispy fries with beef stew and salad",
-                price: 250,
-                image: "https://img-global.cpcdn.com/recipes/fa130fd7d8f048a8/640x640sq70/photo.webp",
-                category: "snacks",
-                rating: 4.6,
-                prepTime: "20 min"
-            }
-        ],
-        fullMenu: [
-            // Smochas
-            {
-                id: 101,
-                name: "Classic Smocha",
-                description: "Fresh minced meat with onions, tomatoes, and secret spices",
-                price: 70,
-                category: "smocha",
-                extras: [
-                    { name: "Extra Chilli", price: 10 },
-                    { name: "Extra Kachumbari", price: 20 }
-                ]
-            },
-            {
-                id: 102,
-                name: "Smocha Special",
-                description: "Minced meat with boiled eggs and special sauce",
-                price: 100,
-                category: "smocha",
-                extras: [
-                    { name: "Extra Chilli", price: 10 },
-                    { name: "Extra Kachumbari", price: 20 }
-                ]
-            },
-            {
-                id: 103,
-                name: "Vegetable Smocha",
-                description: "Fresh vegetables with potatoes and spices",
-                price: 60,
-                category: "smocha",
-                extras: [
-                    { name: "Extra Chilli", price: 10 }
-                ]
-            },
-            // Grilled
-            {
-                id: 201,
-                name: "Nyama Choma (Goat)",
-                description: "Tender grilled goat meat with kachumbari",
-                price: 450,
-                category: "grilled"
-            },
-            {
-                id: 202,
-                name: "Chicken Grilled",
-                description: "Whole chicken marinated and grilled to perfection",
-                price: 600,
-                category: "grilled"
-            },
-            {
-                id: 203,
-                name: "Pork Ribs",
-                description: "Juicy pork ribs with barbecue sauce",
-                price: 550,
-                category: "grilled"
-            },
-            // Snacks
-            {
-                id: 301,
-                name: "Mutura Deluxe",
-                description: "Traditional blood sausage with herbs",
-                price: 150,
-                category: "snacks"
-            },
-            {
-                id: 302,
-                name: "Samosas (3pcs)",
-                description: "Crispy meat samosas with chutney",
-                price: 120,
-                category: "snacks"
-            },
-            {
-                id: 303,
-                name: "Chips Mwitu",
-                description: "Crispy fries with beef stew",
-                price: 250,
-                category: "snacks"
-            },
-            {
-                id: 304,
-                name: "Viazi Karai",
-                description: "Deep fried potatoes with spicy coating",
-                price: 180,
-                category: "snacks"
-            },
-            // Drinks
-            {
-                id: 401,
-                name: "Fresh Juice",
-                description: "Orange, Passion, or Mango",
-                price: 80,
-                category: "drinks"
-            },
-            {
-                id: 402,
-                name: "Soda (500ml)",
-                description: "Coke, Fanta, Sprite",
-                price: 60,
-                category: "drinks"
-            },
-            {
-                id: 403,
-                name: "Bottled Water",
-                description: "500ml Mineral Water",
-                price: 30,
-                category: "drinks"
-            },
-            {
-                id: 404,
-                name: "African Tea",
-                description: "Traditional tea with milk",
-                price: 50,
-                category: "drinks"
-            }
-        ]
-    };
-    
+    let cart = JSON.parse(localStorage.getItem('ashenBitesCart')) || [];
+    updateCartCount();
+
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navMenu = document.querySelector('.nav-menu');
     
-    mobileMenuBtn.addEventListener('click', function() {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
         navMenu.classList.toggle('active');
-        this.innerHTML = navMenu.classList.contains('active') ? 
-            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+            mobileMenuBtn.classList.remove('active');
             navMenu.classList.remove('active');
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Cart functionality
+    const cartButton = document.getElementById('cartButton');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartClose = document.querySelector('.cart-close');
+
+    cartButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        cartSidebar.classList.add('active');
+        renderCartItems();
+        updateCartTotal();
+    });
+
+    cartClose.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+    });
+
+    // Close cart when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!cartButton.contains(e.target) && !cartSidebar.contains(e.target) && 
+            !e.target.closest('.cart-sidebar')) {
+            cartSidebar.classList.remove('active');
+        }
+    });
+
+    // Add to cart functionality
+    document.querySelectorAll('.btn-add').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.dataset.id;
+            const name = this.closest('.dish-card').querySelector('.dish-title').textContent;
+            const price = parseInt(this.closest('.dish-card').querySelector('.price').textContent.replace('Ksh ', '').replace(',', ''));
+            
+            addToCart({
+                id,
+                name,
+                price,
+                quantity: 1
+            });
+            
+            // Show success animation
+            this.innerHTML = '<i class="fas fa-check"></i> Added!';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-plus"></i> Add to Cart';
+            }, 1500);
         });
     });
-    
-    // Cart Functions
+
+    // Cart functions
+    function addToCart(item) {
+        const existingItem = cart.find(cartItem => cartItem.id === item.id);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push(item);
+        }
+        
+        localStorage.setItem('ashenBitesCart', JSON.stringify(cart));
+        updateCartCount();
+        renderCartItems();
+        updateCartTotal();
+        showNotification(`${item.name} added to cart!`);
+    }
+
     function updateCartCount() {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
         
         document.querySelector('.cart-count').textContent = totalItems;
         document.querySelector('.cart-total').textContent = `Ksh ${totalPrice}`;
-        document.querySelector('.subtotal').textContent = `Ksh ${totalPrice}`;
-        document.querySelector('.total').textContent = `Ksh ${totalPrice + 150}`;
-        
-        localStorage.setItem('mamoshiCart', JSON.stringify(cart));
     }
-    
+
     function renderCartItems() {
         const cartItemsContainer = document.getElementById('cartItems');
-        const cartEmpty = document.querySelector('.cart-empty');
         
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = `
@@ -212,14 +109,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         cartItemsContainer.innerHTML = cart.map(item => `
-            <div class="cart-item" data-id="${item.id}">
+            <div class="cart-item">
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
                     <p>Ksh ${item.price} × ${item.quantity}</p>
-                    ${item.extras ? `<small>Extras: ${item.extras}</small>` : ''}
                 </div>
                 <div class="cart-item-actions">
-                    <div class="cart-quantity">
+                    <div class="quantity-controls">
                         <button class="quantity-btn minus" data-id="${item.id}">-</button>
                         <span class="quantity">${item.quantity}</span>
                         <button class="quantity-btn plus" data-id="${item.id}">+</button>
@@ -232,492 +128,154 @@ document.addEventListener('DOMContentLoaded', function() {
         `).join('');
         
         // Add event listeners to cart buttons
-        document.querySelectorAll('.cart-quantity .plus').forEach(btn => {
+        document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
             btn.addEventListener('click', function() {
-                const id = parseInt(this.dataset.id);
-                increaseQuantity(id);
+                const id = this.dataset.id;
+                updateQuantity(id, 1);
             });
         });
         
-        document.querySelectorAll('.cart-quantity .minus').forEach(btn => {
+        document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
             btn.addEventListener('click', function() {
-                const id = parseInt(this.dataset.id);
-                decreaseQuantity(id);
+                const id = this.dataset.id;
+                updateQuantity(id, -1);
             });
         });
         
         document.querySelectorAll('.remove-item').forEach(btn => {
             btn.addEventListener('click', function() {
-                const id = parseInt(this.dataset.id);
+                const id = this.dataset.id;
                 removeFromCart(id);
             });
         });
     }
-    
-    function addToCart(itemId, extras = '') {
-        const menuItem = menuData.fullMenu.find(item => item.id === itemId);
-        if (!menuItem) return;
-        
-        const existingItem = cart.find(item => item.id === itemId && item.extras === extras);
-        
-        if (existingItem) {
-            existingItem.quantity++;
-        } else {
-            cart.push({
-                id: menuItem.id,
-                name: menuItem.name,
-                price: menuItem.price,
-                quantity: 1,
-                extras: extras
-            });
-        }
-        
-        updateCartCount();
-        renderCartItems();
-        showNotification(`${menuItem.name} added to cart!`);
-    }
-    
-    function increaseQuantity(itemId) {
-        const item = cart.find(item => item.id === itemId);
+
+    function updateQuantity(id, change) {
+        const item = cart.find(item => item.id === id);
         if (item) {
-            item.quantity++;
-            updateCartCount();
-            renderCartItems();
-        }
-    }
-    
-    function decreaseQuantity(itemId) {
-        const itemIndex = cart.findIndex(item => item.id === itemId);
-        if (itemIndex > -1) {
-            if (cart[itemIndex].quantity > 1) {
-                cart[itemIndex].quantity--;
+            item.quantity += change;
+            if (item.quantity < 1) {
+                removeFromCart(id);
             } else {
-                cart.splice(itemIndex, 1);
+                localStorage.setItem('ashenBitesCart', JSON.stringify(cart));
+                updateCartCount();
+                renderCartItems();
+                updateCartTotal();
             }
-            updateCartCount();
-            renderCartItems();
         }
     }
-    
-    function removeFromCart(itemId) {
-        cart = cart.filter(item => item.id !== itemId);
+
+    function removeFromCart(id) {
+        cart = cart.filter(item => item.id !== id);
+        localStorage.setItem('ashenBitesCart', JSON.stringify(cart));
         updateCartCount();
         renderCartItems();
+        updateCartTotal();
         showNotification('Item removed from cart');
     }
-    
-    // Cart Sidebar Toggle
-    const cartButton = document.getElementById('cartButton');
-    const cartSidebar = document.getElementById('cartSidebar');
-    const cartClose = document.querySelector('.cart-close');
-    
-    cartButton.addEventListener('click', function(e) {
+
+    function updateCartTotal() {
+        const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const delivery = 150;
+        const total = subtotal + delivery;
+        
+        document.querySelector('.subtotal').textContent = `Ksh ${subtotal}`;
+        document.querySelector('.total').textContent = `Ksh ${total}`;
+        document.getElementById('amount').value = total;
+    }
+
+    // M-Pesa Payment Form
+    const mpesaForm = document.getElementById('mpesaPaymentForm');
+    mpesaForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        cartSidebar.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-    
-    cartClose.addEventListener('click', function() {
-        cartSidebar.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-    
-    // Checkout Button
-    document.getElementById('checkoutBtn').addEventListener('click', function() {
-        if (cart.length === 0) {
-            showNotification('Your cart is empty!', 'warning');
+        
+        const phone = document.getElementById('phoneNumber').value;
+        const amount = document.getElementById('amount').value;
+        
+        if (!phone || phone.length !== 10) {
+            showNotification('Please enter a valid M-Pesa phone number (10 digits)', 'error');
             return;
         }
         
-        const orderSummary = cart.map(item => 
-            `${item.name} × ${item.quantity} - Ksh ${item.price * item.quantity}`
-        ).join('\n');
-        
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const deliveryFee = 150;
-        const grandTotal = total + deliveryFee;
-        
-        const message = `New Order from Mamoshi Kitchen Website:\n\n` +
-                       `Order Details:\n${orderSummary}\n\n` +
-                       `Subtotal: Ksh ${total}\n` +
-                       `Delivery: Ksh ${deliveryFee}\n` +
-                       `Total: Ksh ${grandTotal}\n\n` +
-                       `Please call +254746562072 to confirm payment details.`;
-        
-        // Store order for success modal
-        currentOrder = {
-            items: [...cart],
-            total: grandTotal,
-            timestamp: new Date().toLocaleString()
-        };
+        if (amount <= 0) {
+            showNotification('Please add items to your cart first', 'error');
+            return;
+        }
         
         // Show loading
         showLoading();
         
-        // Simulate order processing
+        // Simulate M-Pesa payment
         setTimeout(() => {
             hideLoading();
-            showSuccessModal();
+            showNotification('Payment initiated! Check your phone to complete the payment.', 'success');
             
-            // Clear cart after order
+            // Clear cart after successful payment
             cart = [];
+            localStorage.setItem('ashenBitesCart', JSON.stringify(cart));
             updateCartCount();
             renderCartItems();
             
-            // Close cart sidebar
-            cartSidebar.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }, 2000);
-    });
-    
-    // Render Popular Dishes
-    function renderPopularDishes() {
-        const container = document.getElementById('popularDishes');
-        container.innerHTML = menuData.popular.map(dish => `
-            <div class="dish-card">
-                <img src="${dish.image}" alt="${dish.name}" class="dish-image">
-                <div class="dish-content">
-                    <div class="dish-header">
-                        <div>
-                            <h3 class="dish-title">${dish.name}</h3>
-                            <div class="dish-rating">
-                                ${'<i class="fas fa-star"></i>'.repeat(Math.floor(dish.rating))}
-                                ${dish.rating % 1 !== 0 ? '<i class="fas fa-star-half-alt"></i>' : ''}
-                                <span>(${dish.rating})</span>
-                            </div>
-                        </div>
-                        <div class="dish-price">Ksh ${dish.price}</div>
-                    </div>
-                    <p class="dish-description">${dish.description}</p>
-                    <div class="dish-actions">
-                        <button class="btn-primary add-to-cart" data-id="${dish.id}">
-                            <i class="fas fa-plus"></i> Add to Cart
-                        </button>
-                        <button class="btn-secondary quick-view" data-id="${dish.id}">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-        
-        // Add event listeners
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = parseInt(this.dataset.id);
-                addToCart(id);
-            });
-        });
-    }
-    
-    // Render Full Menu
-    function renderFullMenu() {
-        const container = document.getElementById('menuGrid');
-        container.innerHTML = menuData.fullMenu.map(item => `
-            <div class="menu-item" data-category="${item.category}">
-                <div class="menu-item-header">
-                    <h3 class="menu-item-title">${item.name}</h3>
-                    <div class="menu-item-price">Ksh ${item.price}</div>
-                </div>
-                <span class="menu-item-category">${item.category.toUpperCase()}</span>
-                <p class="menu-item-description">${item.description}</p>
-                <div class="menu-item-footer">
-                    <div class="quantity-controls" data-id="${item.id}">
-                        <button class="quantity-btn minus">-</button>
-                        <span class="quantity">1</span>
-                        <button class="quantity-btn plus">+</button>
-                    </div>
-                    <button class="btn-primary add-to-cart-btn" data-id="${item.id}">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-        `).join('');
-        
-        // Add event listeners for menu items
-        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = parseInt(this.dataset.id);
-                const quantityElement = this.closest('.menu-item-footer').querySelector('.quantity');
-                const quantity = parseInt(quantityElement.textContent);
-                
-                for (let i = 0; i < quantity; i++) {
-                    addToCart(id);
-                }
-                
-                // Reset quantity
-                quantityElement.textContent = '1';
-            });
-        });
-        
-        document.querySelectorAll('.quantity-controls .plus').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const quantityElement = this.parentElement.querySelector('.quantity');
-                quantityElement.textContent = parseInt(quantityElement.textContent) + 1;
-            });
-        });
-        
-        document.querySelectorAll('.quantity-controls .minus').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const quantityElement = this.parentElement.querySelector('.quantity');
-                const current = parseInt(quantityElement.textContent);
-                if (current > 1) {
-                    quantityElement.textContent = current - 1;
-                }
-            });
-        });
-    }
-    
-    // Menu Category Filter
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Update active button
-            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            const category = this.dataset.category;
-            const menuItems = document.querySelectorAll('.menu-item');
-            
-            menuItems.forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-    
-    // Quick Order Form
-    const quickOrderForm = document.getElementById('quickOrderForm');
-    quickOrderForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            location: document.getElementById('location').value,
-            orderDetails: document.getElementById('orderDetails').value,
-            time: document.querySelector('input[name="time"]:checked').value
-        };
-        
-        // Prepare WhatsApp message
-        const message = `New Quick Order from Mamoshi Kitchen:\n\n` +
-                       `Name: ${formData.name}\n` +
-                       `Phone: ${formData.phone}\n` +
-                       `Location: ${formData.location}\n` +
-                       `Order: ${formData.orderDetails}\n` +
-                       `Time: ${formData.time === 'asap' ? 'ASAP' : 'Schedule for later'}\n\n` +
-                       `Please confirm and send M-Pesa details.`;
-        
-        // Encode for WhatsApp
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/254746562072?text=${encodedMessage}`;
-        
-        // Show loading
-        showLoading();
-        
-        // Simulate processing
-        setTimeout(() => {
-            hideLoading();
-            
-            // Store order details
-            currentOrder = {
-                customer: formData,
-                timestamp: new Date().toLocaleString()
-            };
-            
-            showSuccessModal();
-            
-            // Reset form
-            quickOrderForm.reset();
-            
-            // Open WhatsApp after a delay
+            // Show success modal
             setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 1500);
-            
-        }, 2000);
-    });
-    
-    // Testimonial Slider
-    let currentTestimonial = 0;
-    const testimonials = document.querySelectorAll('.testimonial');
-    const dots = document.querySelectorAll('.dot');
-    
-    function showTestimonial(index) {
-        testimonials.forEach(t => t.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
-        
-        testimonials[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentTestimonial = index;
-    }
-    
-    document.querySelector('.slider-next').addEventListener('click', () => {
-        showTestimonial((currentTestimonial + 1) % testimonials.length);
-    });
-    
-    document.querySelector('.slider-prev').addEventListener('click', () => {
-        showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
-    });
-    
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => showTestimonial(index));
-    });
-    
-    // Auto-rotate testimonials
-    setInterval(() => {
-        showTestimonial((currentTestimonial + 1) % testimonials.length);
-    }, 5000);
-    
-    // Newsletter Forms
-    const newsletterForms = document.querySelectorAll('.newsletter-form');
-    newsletterForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            // Show success message
-            const button = this.querySelector('button');
-            const originalHTML = button.innerHTML;
-            
-            button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
-            button.style.background = 'var(--success-color)';
-            
-            setTimeout(() => {
-                button.innerHTML = originalHTML;
-                button.style.background = '';
-                this.reset();
-                showNotification('Thank you for subscribing!', 'success');
+                showNotification('Payment confirmed! Your order is being prepared.', 'success');
             }, 2000);
-            
-            console.log('Newsletter subscription:', email);
-        });
+        }, 3000);
     });
-    
-    // Success Modal
-    const successModal = document.getElementById('successModal');
-    
-    function showSuccessModal() {
-        const summary = document.getElementById('orderSummary');
-        
-        if (currentOrder.items) {
-            // From cart checkout
-            summary.innerHTML = currentOrder.items.map(item => 
-                `<p>${item.name} × ${item.quantity} - Ksh ${item.price * item.quantity}</p>`
-            ).join('') + 
-            `<hr><p><strong>Total: Ksh ${currentOrder.total}</strong></p>`;
-        } else if (currentOrder.customer) {
-            // From quick order form
-            summary.innerHTML = `
-                <p><strong>Customer:</strong> ${currentOrder.customer.name}</p>
-                <p><strong>Order:</strong> ${currentOrder.customer.orderDetails}</p>
-                <p><strong>Location:</strong> ${currentOrder.customer.location}</p>
-                <p><strong>Time:</strong> ${currentOrder.customer.time === 'asap' ? 'ASAP' : 'Schedule for later'}</p>
-            `;
+
+    // Checkout button
+    document.getElementById('checkoutBtn').addEventListener('click', function() {
+        if (cart.length === 0) {
+            showNotification('Your cart is empty!', 'error');
+            return;
         }
         
-        successModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    document.querySelector('.close-success').addEventListener('click', () => {
-        successModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        // Scroll to payment section
+        document.querySelector('.mpesa-section').scrollIntoView({ behavior: 'smooth' });
     });
-    
-    // Loading Overlay
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    
-    function showLoading() {
-        loadingOverlay.classList.add('active');
-    }
-    
-    function hideLoading() {
-        loadingOverlay.classList.remove('active');
-    }
-    
-    // Notification System
+
+    // Notification system
     function showNotification(message, type = 'success') {
-        // Remove existing notification
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
         const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
+        notification.className = `notification notification-${type}`;
         notification.innerHTML = `
             <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
             <span>${message}</span>
-            <button class="notification-close">&times;</button>
         `;
         
         document.body.appendChild(notification);
         
-        // Add close button functionality
-        notification.querySelector('.notification-close').addEventListener('click', () => {
-            notification.remove();
-        });
-        
-        // Auto-remove after 5 seconds
         setTimeout(() => {
-            if (notification.parentNode) {
+            notification.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
                 notification.remove();
-            }
-        }, 5000);
+            }, 300);
+        }, 3000);
     }
-    
-    // Add notification styles
-    const style = document.createElement('style');
-    style.textContent = `
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1400;
-            animation: slideIn 0.3s ease;
-            border-left: 4px solid var(--success-color);
-            max-width: 350px;
+
+    // Loading overlay
+    function showLoading() {
+        document.getElementById('loadingOverlay').classList.add('active');
+    }
+
+    function hideLoading() {
+        document.getElementById('loadingOverlay').classList.remove('active');
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
-        
-        .notification.warning {
-            border-left-color: var(--warning-color);
-        }
-        
-        .notification i {
-            font-size: 1.25rem;
-            color: var(--success-color);
-        }
-        
-        .notification.warning i {
-            color: var(--warning-color);
-        }
-        
-        .notification-close {
-            background: none;
-            border: none;
-            font-size: 1.25rem;
-            cursor: pointer;
-            color: #999;
-            margin-left: auto;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    `;
-    document.head.appendChild(style);
-    
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -732,12 +290,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                mobileMenuBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     });
-    
-    // Active nav link based on scroll position
-    window.addEventListener('scroll', function() {
+
+    // Active navigation based on scroll
+    window.addEventListener('scroll', () => {
         const sections = document.querySelectorAll('section[id]');
         const scrollPosition = window.scrollY + 100;
         
@@ -756,41 +319,62 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Footer menu category links
-    document.querySelectorAll('[data-category]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const category = this.dataset.category;
-            const categoryBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
-            
-            if (categoryBtn) {
-                categoryBtn.click();
-                window.scrollTo({
-                    top: document.getElementById('menu').offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
+
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+        contactForm.reset();
     });
-    
-    // Initialize
-    updateCartCount();
-    renderCartItems();
-    renderPopularDishes();
-    renderFullMenu();
-    showTestimonial(0);
-    
-    // Add current year to footer
-    document.querySelectorAll('.current-year').forEach(el => {
-        el.textContent = new Date().getFullYear();
+
+    // Newsletter subscription
+    const newsletterForm = document.querySelector('.newsletter-form');
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        showNotification('Thank you for subscribing!', 'success');
+        newsletterForm.reset();
     });
-    
-    // Add click sound for buttons (optional)
-    document.querySelectorAll('button, .btn-primary, .btn-secondary').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // You can add a sound effect here if desired
-            // new Audio('click.mp3').play();
-        });
-    });
+
+    // Add notification styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1100;
+            border-left: 4px solid var(--success);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification-error {
+            border-left-color: #dc3545;
+        }
+        
+        .notification i {
+            font-size: 1.2rem;
+        }
+        
+        .notification-success i {
+            color: var(--success);
+        }
+        
+        .notification-error i {
+            color: #dc3545;
+        }
+    `;
+    document.head.appendChild(style);
 });
