@@ -90,16 +90,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const elements = {
         mobileMenuBtn: document.querySelector('.mobile-menu-btn'),
         navMenu: document.querySelector('.nav-menu'),
-        cartBtn: document.getElementById('cartButton'),
-        cartPanel: document.getElementById('cartPanel'),
-        cartClose: document.getElementById('cartClose'),
-        cartItems: document.getElementById('cartItems'),
+        cartBtn: document.querySelector('.cart-btn'),
+        cartPanel: document.querySelector('.cart-panel'),
+        cartClose: document.querySelector('.cart-close'),
+        cartItems: document.querySelector('.cart-body'),
         cartCount: document.querySelector('.cart-count'),
         cartTotal: document.querySelector('.cart-total'),
         subtotal: document.querySelector('.subtotal'),
         deliveryFee: document.querySelector('.delivery-fee'),
         totalAmount: document.querySelector('.total-amount'),
-        checkoutBtn: document.getElementById('checkoutBtn'),
+        checkoutBtn: document.querySelector('.btn-checkout'),
         browseMenuBtn: document.getElementById('browseMenuBtn'),
         orderNowBtn: document.getElementById('orderNowBtn'),
         viewMenuBtn: document.getElementById('viewMenuBtn'),
@@ -113,24 +113,27 @@ document.addEventListener('DOMContentLoaded', function() {
         submitPaymentBtn: document.getElementById('submitPaymentBtn'),
         orderSuccessModal: document.getElementById('orderSuccessModal'),
         continueShoppingBtn: document.getElementById('continueShoppingBtn'),
-        loadingModal: document.getElementById('loadingModal'),
+        loadingOverlay: document.querySelector('.loading-overlay'),
         quickViewModal: document.getElementById('quickViewModal'),
-        toastContainer: document.getElementById('toastContainer'),
-        menuGrid: document.getElementById('menuGrid'),
+        toastContainer: document.querySelector('.toast-container'),
+        dishesGrid: document.querySelector('.dishes-grid'),
         categoryFilters: document.querySelectorAll('.category-filter'),
         paymentMethods: document.querySelectorAll('.method-card'),
         orderTotal: document.querySelector('.order-total'),
         amountTotal: document.querySelector('.amount-total'),
         customerName: document.getElementById('customerName'),
         customerPhone: document.getElementById('customerPhone'),
-        deliveryAddress: document.getElementById('deliveryAddress')
+        deliveryAddress: document.getElementById('deliveryAddress'),
+        whatsappFab: document.querySelector('.whatsapp-fab'),
+        callFab: document.querySelector('.call-fab'),
+        navLinks: document.querySelectorAll('.nav-link')
     };
 
     // ====================
     // INITIAL SETUP
     // ====================
     updateCartCount();
-    renderMenuGrid();
+    renderDishesGrid();
     setupEventListeners();
 
     // ====================
@@ -140,39 +143,62 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mobile Menu
         elements.mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         
+        // Navigation Links
+        elements.navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                scrollToSection(targetId);
+                setActiveNavLink(this);
+            });
+        });
+        
         // Cart
         elements.cartBtn.addEventListener('click', openCart);
         elements.cartClose.addEventListener('click', closeCart);
-        elements.browseMenuBtn?.addEventListener('click', () => {
-            closeCart();
-            scrollToSection('#menu');
+        
+        // Hero Buttons
+        document.querySelectorAll('.btn-hero-primary, .btn-hero-secondary').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.textContent.toLowerCase();
+                if (action.includes('order now') || action.includes('order')) {
+                    scrollToSection('#featured-dishes');
+                } else if (action.includes('menu') || action.includes('view')) {
+                    scrollToSection('#featured-dishes');
+                }
+            });
         });
         
-        // Navigation
-        elements.orderNowBtn?.addEventListener('click', () => scrollToSection('#order'));
-        elements.viewMenuBtn?.addEventListener('click', () => scrollToSection('#menu'));
-        elements.viewCartBtn?.addEventListener('click', openCart);
-        elements.checkoutProcessBtn?.addEventListener('click', () => scrollToSection('.payment-section'));
-        elements.trackOrderBtn?.addEventListener('click', showToast);
-        elements.openMapBtn?.addEventListener('click', openGoogleMaps);
-        elements.callBtn?.addEventListener('click', makePhoneCall);
-        elements.applyPromoBtn?.addEventListener('click', applyPromoCode);
-        elements.continueShoppingBtn?.addEventListener('click', closeSuccessModal);
+        // Floating Actions
+        elements.whatsappFab?.addEventListener('click', sendWhatsAppMessage);
+        elements.callFab?.addEventListener('click', makePhoneCall);
         
-        // Menu Filtering
-        elements.categoryFilters.forEach(filter => {
-            filter.addEventListener('click', () => filterMenu(filter.dataset.category));
+        // Cart Checkout
+        elements.checkoutBtn?.addEventListener('click', function() {
+            if (cart.length > 0) {
+                scrollToSection('.payment-section');
+            }
         });
         
         // Payment Methods
-        elements.paymentMethods.forEach(method => {
-            method.addEventListener('click', () => selectPaymentMethod(method.dataset.method));
-        });
+        if (elements.paymentMethods) {
+            elements.paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    selectPaymentMethod(this.dataset.method);
+                });
+            });
+        }
         
         // Payment Form
         elements.paymentForm?.addEventListener('submit', processPayment);
         
-        // Add to Cart buttons
+        // Continue Shopping Button
+        elements.continueShoppingBtn?.addEventListener('click', function() {
+            closeModal(elements.orderSuccessModal);
+            scrollToSection('#home');
+        });
+        
+        // Quantity Controls and Add to Cart
         document.addEventListener('click', function(e) {
             // Add to cart from featured dishes
             if (e.target.classList.contains('add-to-cart')) {
@@ -192,12 +218,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const dishId = e.target.dataset.id;
                 showQuickView(dishId);
             }
+            
+            // Close modals when clicking outside
+            if (e.target.classList.contains('modal') || e.target.classList.contains('loading-overlay')) {
+                closeModal(e.target);
+            }
         });
         
-        // Close modals when clicking outside
+        // Remove item from cart
         document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                closeModal(e.target);
+            if (e.target.classList.contains('remove-item') || 
+                e.target.closest('.remove-item')) {
+                const dishId = e.target.dataset.id || e.target.closest('.remove-item').dataset.id;
+                removeFromCart(dishId);
             }
         });
         
@@ -205,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeAllModals();
+                closeCart();
             }
         });
         
@@ -213,6 +247,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update payment summary when cart changes
         document.addEventListener('cartUpdated', updatePaymentSummary);
+        
+        // Apply promo code
+        elements.applyPromoBtn?.addEventListener('click', applyPromoCode);
+        
+        // Track order
+        elements.trackOrderBtn?.addEventListener('click', function() {
+            showToast('Track order feature coming soon!', 'info');
+        });
+        
+        // Open map
+        elements.openMapBtn?.addEventListener('click', openGoogleMaps);
     }
 
     // ====================
@@ -279,7 +324,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (elements.cartCount) {
             elements.cartCount.textContent = totalItems;
-            elements.cartTotal.textContent = `Ksh ${totalPrice}`;
         }
         
         // Update checkout button state
@@ -302,43 +346,66 @@ document.addEventListener('DOMContentLoaded', function() {
                     <i class="fas fa-shopping-basket"></i>
                     <h4>Your cart is empty</h4>
                     <p>Add some delicious items from our menu</p>
-                    <button class="btn-primary" id="browseMenuBtn">
+                    <button class="btn-hero-primary" id="browseMenuBtn">
                         <i class="fas fa-utensils"></i> Browse Menu
                     </button>
                 </div>
             `;
             
             // Reattach event listener
-            document.getElementById('browseMenuBtn')?.addEventListener('click', () => {
+            document.getElementById('browseMenuBtn')?.addEventListener('click', function() {
                 closeCart();
-                scrollToSection('#menu');
+                scrollToSection('#featured-dishes');
             });
             
             return;
         }
         
-        elements.cartItems.innerHTML = cart.map(item => `
-            <div class="cart-item">
-                <div class="cart-item-image">
-                    <img src="${item.image}" alt="${item.name}">
-                </div>
-                <div class="cart-item-details">
-                    <h4>${item.name}</h4>
-                    <p>Ksh ${item.price} × ${item.quantity}</p>
-                    <div class="cart-item-actions">
-                        <button class="qty-btn minus" data-id="${item.id}">-</button>
-                        <span class="qty-display">${item.quantity}</span>
-                        <button class="qty-btn plus" data-id="${item.id}">+</button>
-                        <button class="remove-btn" data-id="${item.id}">
-                            <i class="fas fa-trash"></i>
-                        </button>
+        const cartHTML = cart.map(item => {
+            const totalPrice = item.price * item.quantity;
+            return `
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p class="cart-item-price">Ksh ${item.price} × ${item.quantity}</p>
+                        <div class="cart-item-actions">
+                            <button class="qty-btn minus" data-id="${item.id}">-</button>
+                            <span class="qty-display">${item.quantity}</span>
+                            <button class="qty-btn plus" data-id="${item.id}">+</button>
+                            <button class="remove-item" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cart-item-total">
+                        Ksh ${totalPrice}
                     </div>
                 </div>
-                <div class="cart-item-total">
-                    Ksh ${item.price * item.quantity}
+            `;
+        }).join('');
+        
+        elements.cartItems.innerHTML = `
+            <div class="cart-items-list">
+                ${cartHTML}
+            </div>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span class="subtotal">Ksh ${calculateSubtotal()}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee</span>
+                    <span class="delivery-fee">Ksh 150</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span class="total-amount">Ksh ${calculateTotal()}</span>
                 </div>
             </div>
-        `).join('');
+        `;
         
         // Add event listeners to cart item buttons
         elements.cartItems.querySelectorAll('.qty-btn').forEach(btn => {
@@ -349,58 +416,64 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        elements.cartItems.querySelectorAll('.remove-btn').forEach(btn => {
+        elements.cartItems.querySelectorAll('.remove-item').forEach(btn => {
             btn.addEventListener('click', function() {
                 const dishId = this.dataset.id;
                 removeFromCart(dishId);
             });
         });
         
-        // Update cart totals
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const delivery = 150;
-        const total = subtotal + delivery;
-        
-        if (elements.subtotal) elements.subtotal.textContent = `Ksh ${subtotal}`;
-        if (elements.totalAmount) elements.totalAmount.textContent = `Ksh ${total}`;
+        // Update summary elements
+        if (elements.subtotal) elements.subtotal.textContent = `Ksh ${calculateSubtotal()}`;
+        if (elements.totalAmount) elements.totalAmount.textContent = `Ksh ${calculateTotal()}`;
+    }
+
+    function calculateSubtotal() {
+        return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    }
+
+    function calculateTotal() {
+        return calculateSubtotal() + 150;
     }
 
     // ====================
     // MENU FUNCTIONS
     // ====================
-    function renderMenuGrid(filter = 'all') {
-        if (!elements.menuGrid) return;
+    function renderDishesGrid(filter = 'all') {
+        if (!elements.dishesGrid) return;
         
         const filteredMenu = filter === 'all' 
             ? menuData 
             : menuData.filter(item => item.category === filter);
         
-        elements.menuGrid.innerHTML = filteredMenu.map(item => `
-            <div class="menu-item" data-category="${item.category}">
-                <div class="menu-item-image">
+        elements.dishesGrid.innerHTML = filteredMenu.map(item => `
+            <div class="dish-card ${item.popular ? 'featured' : ''}" data-category="${item.category}">
+                <div class="dish-image">
                     <img src="${item.image}" alt="${item.name}">
-                    ${item.popular ? '<span class="popular-badge">Popular</span>' : ''}
-                    <button class="quick-view-btn" data-id="${item.id}">
+                    ${item.popular ? '<span class="dish-tag popular">Popular</span>' : ''}
+                    <button class="quick-view" data-id="${item.id}">
                         <i class="fas fa-eye"></i>
                     </button>
                 </div>
-                <div class="menu-item-content">
-                    <h3>${item.name}</h3>
-                    <p>${item.description}</p>
-                    <div class="menu-item-meta">
+                <div class="dish-content">
+                    <h3 class="dish-title">${item.name}</h3>
+                    <p class="dish-description">${item.description}</p>
+                    <div class="dish-meta">
                         <span><i class="fas fa-clock"></i> ${item.prepTime}</span>
                         <span><i class="fas fa-pepper-hot"></i> ${item.spiceLevel}</span>
                         <span><i class="fas fa-star"></i> ${item.rating}</span>
                     </div>
-                    <div class="menu-item-footer">
-                        <div class="price">Ksh ${item.price}</div>
+                    <div class="dish-footer">
+                        <div class="price">
+                            <span class="current">Ksh ${item.price}</span>
+                        </div>
                         <div class="quantity-control">
                             <button class="qty-btn minus" data-id="${item.id}">-</button>
                             <span class="qty-display">1</span>
                             <button class="qty-btn plus" data-id="${item.id}">+</button>
                         </div>
-                        <button class="add-to-cart-btn" data-id="${item.id}">
-                            <i class="fas fa-cart-plus"></i> Add
+                        <button class="add-to-cart" data-id="${item.id}">
+                            <i class="fas fa-cart-plus"></i>
                         </button>
                     </div>
                 </div>
@@ -408,14 +481,14 @@ document.addEventListener('DOMContentLoaded', function() {
         `).join('');
         
         // Add event listeners to menu items
-        elements.menuGrid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        elements.dishesGrid.querySelectorAll('.add-to-cart').forEach(btn => {
             btn.addEventListener('click', function() {
                 const dishId = this.dataset.id;
                 addToCart(dishId);
             });
         });
         
-        elements.menuGrid.querySelectorAll('.qty-btn').forEach(btn => {
+        elements.dishesGrid.querySelectorAll('.qty-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const dishId = this.dataset.id;
                 const isPlus = this.classList.contains('plus');
@@ -433,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        elements.menuGrid.querySelectorAll('.quick-view-btn').forEach(btn => {
+        elements.dishesGrid.querySelectorAll('.quick-view').forEach(btn => {
             btn.addEventListener('click', function() {
                 const dishId = this.dataset.id;
                 showQuickView(dishId);
@@ -441,67 +514,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function filterMenu(category) {
-        // Update active filter
-        elements.categoryFilters.forEach(filter => {
-            filter.classList.remove('active');
-            if (filter.dataset.category === category) {
-                filter.classList.add('active');
-            }
-        });
-        
-        renderMenuGrid(category);
-        scrollToSection('#menu');
-    }
-
     function showQuickView(dishId) {
         const dish = menuData.find(item => item.id == dishId);
         if (!dish) return;
         
-        const quickViewContent = document.getElementById('quickViewContent');
-        if (quickViewContent) {
-            quickViewContent.innerHTML = `
-                <div class="quickview-image">
-                    <img src="${dish.image}" alt="${dish.name}">
-                </div>
-                <div class="quickview-details">
-                    <h3>${dish.name}</h3>
-                    <p>${dish.description}</p>
-                    <div class="quickview-meta">
-                        <div class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Preparation: ${dish.prepTime}</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-pepper-hot"></i>
-                            <span>Spice Level: ${dish.spiceLevel}</span>
-                        </div>
-                        <div class="meta-item">
-                            <i class="fas fa-star"></i>
-                            <span>Rating: ${dish.rating}/5</span>
-                        </div>
+        const modalContent = document.querySelector('#quickViewModal .modal-content');
+        if (modalContent) {
+            modalContent.innerHTML = `
+                <div class="quickview-container">
+                    <div class="quickview-image">
+                        <img src="${dish.image}" alt="${dish.name}">
+                        ${dish.popular ? '<span class="popular-badge">Popular</span>' : ''}
                     </div>
-                    <div class="quickview-price">
-                        <span class="price">Ksh ${dish.price}</span>
-                        <div class="quantity-control">
-                            <button class="qty-btn minus" data-id="${dish.id}">-</button>
-                            <span class="qty-display">1</span>
-                            <button class="qty-btn plus" data-id="${dish.id}">+</button>
+                    <div class="quickview-details">
+                        <h3>${dish.name}</h3>
+                        <p>${dish.description}</p>
+                        <div class="quickview-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Preparation: ${dish.prepTime}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-pepper-hot"></i>
+                                <span>Spice Level: ${dish.spiceLevel}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-star"></i>
+                                <span>Rating: ${dish.rating}/5</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-tag"></i>
+                                <span>Category: ${dish.category}</span>
+                            </div>
                         </div>
+                        <div class="quickview-price">
+                            <span class="price">Ksh ${dish.price}</span>
+                            <div class="quantity-control">
+                                <button class="qty-btn minus" data-id="${dish.id}">-</button>
+                                <span class="qty-display">1</span>
+                                <button class="qty-btn plus" data-id="${dish.id}">+</button>
+                            </div>
+                        </div>
+                        <button class="btn-hero-primary add-to-cart-quickview" data-id="${dish.id}">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
                     </div>
-                    <button class="btn-primary add-to-cart-quickview" data-id="${dish.id}">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    <button class="modal-close" onclick="closeModal(document.getElementById('quickViewModal'))">
+                        <i class="fas fa-times"></i>
                     </button>
                 </div>
             `;
             
             // Add event listeners
-            quickViewContent.querySelector('.add-to-cart-quickview')?.addEventListener('click', function() {
+            modalContent.querySelector('.add-to-cart-quickview')?.addEventListener('click', function() {
                 addToCart(dishId);
                 closeModal(elements.quickViewModal);
             });
             
-            quickViewContent.querySelectorAll('.qty-btn').forEach(btn => {
+            modalContent.querySelectorAll('.qty-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const isPlus = this.classList.contains('plus');
                     const qtyDisplay = this.parentElement.querySelector('.qty-display');
@@ -528,12 +598,14 @@ document.addEventListener('DOMContentLoaded', function() {
         currentPaymentMethod = method;
         
         // Update UI
-        elements.paymentMethods.forEach(m => {
-            m.classList.remove('active');
-            if (m.dataset.method === method) {
-                m.classList.add('active');
-            }
-        });
+        if (elements.paymentMethods) {
+            elements.paymentMethods.forEach(m => {
+                m.classList.remove('active');
+                if (m.dataset.method === method) {
+                    m.classList.add('active');
+                }
+            });
+        }
         
         // Update payment button text
         if (elements.submitPaymentBtn) {
@@ -548,9 +620,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updatePaymentSummary() {
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const delivery = 150;
-        const total = subtotal + delivery;
+        const total = calculateTotal();
         
         if (elements.orderTotal) elements.orderTotal.textContent = `Ksh ${total}`;
         if (elements.amountTotal) elements.amountTotal.textContent = `Ksh ${total}`;
@@ -566,15 +636,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Show loading
-        openModal(elements.loadingModal);
+        openModal(elements.loadingOverlay);
         
         // Simulate payment processing
         setTimeout(() => {
-            closeModal(elements.loadingModal);
+            closeModal(elements.loadingOverlay);
             
             // Generate order summary
             const orderDetails = generateOrderSummary();
-            const orderDetailsElement = document.getElementById('orderDetails');
+            const orderDetailsElement = document.querySelector('.order-details');
             if (orderDetailsElement) {
                 orderDetailsElement.innerHTML = orderDetails;
             }
@@ -588,12 +658,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.dispatchEvent(new Event('cartUpdated'));
             
             // Clear form
-            elements.paymentForm.reset();
+            if (elements.paymentForm) {
+                elements.paymentForm.reset();
+            }
             
             // Send WhatsApp message
             sendWhatsAppOrder();
             
-        }, 3000);
+        }, 2000);
     }
 
     function validatePaymentForm() {
@@ -610,7 +682,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Validate phone number (Kenyan format)
-        const phoneRegex = /^0[17]\d{8}$/;
+        const phoneRegex = /^(07|01)\d{8}$/;
         if (!phoneRegex.test(phone)) {
             return false;
         }
@@ -619,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function generateOrderSummary() {
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const subtotal = calculateSubtotal();
         const delivery = 150;
         const total = subtotal + delivery;
         
@@ -655,6 +727,18 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.mobileMenuBtn.classList.toggle('active');
         elements.navMenu.classList.toggle('active');
         document.body.style.overflow = elements.navMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    function setActiveNavLink(activeLink) {
+        elements.navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+        activeLink.classList.add('active');
+        
+        // Close mobile menu if open
+        if (elements.navMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
     }
 
     function openCart() {
@@ -706,18 +790,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function closeAllModals() {
-        document.querySelectorAll('.modal').forEach(modal => {
+        document.querySelectorAll('.modal, .loading-overlay').forEach(modal => {
             modal.classList.remove('active');
         });
         document.body.style.overflow = '';
     }
 
-    function closeSuccessModal() {
-        closeModal(elements.orderSuccessModal);
-        scrollToSection('#home');
-    }
-
     function showToast(message, type = 'success') {
+        if (!elements.toastContainer) {
+            // Create toast container if it doesn't exist
+            elements.toastContainer = document.createElement('div');
+            elements.toastContainer.className = 'toast-container';
+            document.body.appendChild(elements.toastContainer);
+        }
+        
         const toast = document.createElement('div');
         toast.className = `toast ${type}`;
         toast.innerHTML = `
@@ -750,8 +836,18 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'tel:+254746562072';
     }
 
+    function sendWhatsAppMessage() {
+        const message = "Hello! I'd like to place an order from Ashen Bites.";
+        window.open(`https://wa.me/254746562072?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
     function applyPromoCode() {
-        showToast('Promo code applied! 15% discount added to your order.', 'success');
+        const promoCode = document.getElementById('promoCode')?.value;
+        if (promoCode) {
+            showToast('Promo code applied! 10% discount added to your order.', 'success');
+        } else {
+            showToast('Please enter a promo code', 'warning');
+        }
     }
 
     function sendWhatsAppOrder() {
@@ -763,8 +859,8 @@ document.addEventListener('DOMContentLoaded', function() {
             `${item.name} × ${item.quantity} - Ksh ${item.price * item.quantity}`
         ).join('%0A');
         
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const total = subtotal + 150;
+        const subtotal = calculateSubtotal();
+        const total = calculateTotal();
         
         const message = `New Order from Ashen Bites Website%0A%0A` +
                        `Customer: ${name}%0A` +
