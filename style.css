@@ -1550,4 +1550,479 @@ a:hover {
   }
 }
 
+/* ============================================
+   FIXES FOR MENU SECTION & IMAGE SCALING
+   ============================================ */
 
+/* 1. FIX MENU GRID LAYOUT */
+.menu-section .section-header.center {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.menu-section .section-title {
+    font-size: 2.5rem;
+    background: var(--gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-sm);
+}
+
+.menu-section .section-subtitle {
+    color: var(--medium-gray);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.6;
+}
+
+/* 2. FIX MENU CATEGORIES */
+.menu-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    padding: 0 var(--space-md);
+}
+
+.category-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--pure-white);
+    border: 2px solid var(--light-gray);
+    border-radius: 50px;
+    color: var(--medium-gray);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    white-space: nowrap;
+    margin-bottom: 8px;
+}
+
+.category-filter:hover {
+    border-color: var(--sunset-orange);
+    color: var(--sunset-orange);
+    transform: translateY(-2px);
+}
+
+.category-filter.active {
+    background: var(--gradient-sunset);
+    border-color: transparent;
+    color: var(--pure-white);
+    box-shadow: var(--shadow-medium);
+}
+
+.category-filter i {
+    font-size: 1.1rem;
+}
+
+/* 3. FIX MENU GRID LAYOUT */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+    padding: 0 var(--space-md);
+}
+
+/* Windows-specific fix for image scaling */
+@media screen and (max-width: 1400px) and (min-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: var(--space-md);
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--space-md);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: var(--space-xl) auto;
+    }
+}
+
+/* 4. FIX MENU ITEM CARDS */
+.menu-item {
+    background: var(--pure-white);
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-normal);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-bold);
+}
+
+.menu-item-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+/* Windows-specific image fix */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .menu-item-image {
+        height: 200px;
+    }
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.menu-item:hover .menu-item-image img {
+    transform: scale(1.08);
+}
+
+/* Fix for oversized images on Windows */
+@supports (-ms-ime-align: auto) {
+    .menu-item-image img {
+        max-height: 220px;
+        object-position: center;
+    }
+}
+
+/* Safari/WebKit fix */
+@media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+        .menu-item-image {
+            height: 230px;
+        }
+    }
+}
+
+.popular-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 15px;
+    background: var(--gradient-sunset);
+    color: var(--pure-white);
+    border-radius: var(--radius-medium);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.quick-view-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: var(--radius-round);
+    color: var(--sunset-orange);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-view-btn:hover {
+    background: var(--sunset-orange);
+    color: var(--pure-white);
+    transform: scale(1.1);
+}
+
+/* 5. FIX MENU ITEM CONTENT */
+.menu-item-content {
+    padding: var(--space-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+    color: var(--navy-blue);
+    line-height: 1.3;
+}
+
+.menu-item-content > p {
+    color: var(--medium-gray);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    flex: 1;
+}
+
+.menu-item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: var(--space-md);
+    font-size: 0.85rem;
+}
+
+.menu-item-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    background: var(--off-white);
+    border-radius: 20px;
+    color: var(--medium-gray);
+}
+
+.menu-item-meta i {
+    color: var(--sunset-orange);
+    font-size: 0.9rem;
+}
+
+/* 6. FIX MENU ITEM FOOTER */
+.menu-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--light-gray);
+}
+
+.menu-item-footer .price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--sunset-orange);
+}
+
+.menu-item-footer .quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--off-white);
+    padding: 6px 12px;
+    border-radius: 30px;
+}
+
+.menu-item-footer .qty-btn {
+    width: 28px;
+    height: 28px;
+    background: var(--pure-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 50%;
+    color: var(--navy-blue);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.menu-item-footer .qty-btn:hover {
+    border-color: var(--sunset-orange);
+    color: var(--sunset-orange);
+}
+
+.menu-item-footer .qty-display {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--navy-blue);
+}
+
+.add-to-cart-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--gradient-sunset);
+    color: var(--pure-white);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    white-space: nowrap;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.add-to-cart-btn i {
+    font-size: 1.1rem;
+}
+
+/* 7. FIX PROMO CARD */
+.menu-promo {
+    margin-top: var(--space-xl);
+    padding: 0 var(--space-md);
+}
+
+.promo-card {
+    background: var(--gradient-sunset);
+    border-radius: var(--radius-large);
+    padding: var(--space-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    color: var(--pure-white);
+    box-shadow: var(--shadow-bold);
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 20%);
+    opacity: 0.3;
+}
+
+.promo-icon {
+    font-size: 2.5rem;
+    color: var(--pure-white);
+    position: relative;
+    z-index: 1;
+}
+
+.promo-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.promo-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-sm);
+    color: var(--pure-white);
+}
+
+.promo-content p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.btn-promo {
+    padding: 12px 28px;
+    background: var(--pure-white);
+    color: var(--sunset-orange);
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.btn-promo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 8. WINDOWS-SPECIFIC FIXES */
+@media screen and (max-width: 1440px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .menu-item-image {
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: var(--space-md);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    
+    .menu-item-image {
+        height: 180px;
+    }
+}
+
+/* High DPI/4K Screen Fix */
+@media screen and (min-width: 1920px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--space-xl);
+    }
+    
+    .menu-item-image {
+        height: 250px;
+    }
+}
+
+/* 9. FIX FOR SPECIFIC BROWSER QUIRKS */
+/* Edge/IE Fix */
+@supports (-ms-ime-align: auto) {
+    .menu-item {
+        margin: 0 5px;
+    }
+}
+
+/* Firefox Fix */
+@-moz-document url-prefix() {
+    .menu-item-image img {
+        image-rendering: -moz-crisp-edges;
+    }
+}
+
+/* 10. ANIMATION FOR MENU ITEMS */
+@keyframes menuItemAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item {
+    animation: menuItemAppear 0.5s ease-out;
+}
+
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.2s; }
+.menu-item:nth-child(3) { animation-delay: 0.3s; }
+.menu-item:nth-child(4) { animation-delay: 0.4s; }
+.menu-item:nth-child(5) { animation-delay: 0.5s; }
+.menu-item:nth-child(6) { animation-delay: 0.6s; }
