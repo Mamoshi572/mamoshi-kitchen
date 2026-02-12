@@ -8,14 +8,16 @@
     <meta name="description" content="Authentic Kenyan street food – Smocha, Mutura, Nyama Choma, Chips Mwitu. Order via M-Pesa and taste Nairobi's boldest flavours.">
     <meta name="keywords" content="kenyan street food, smocha nairobi, mutura delivery, chips mwitu, ashen bites, lipa na mpesa food">
     <meta property="og:title" content="Ashen Bites | Jiko Spirit of Kenya">
-    <meta property="og:image" content="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+    <meta property="og:image" content="images/og-image.jpg">
     <!-- FONTS – vibrant, streetwise, modern Kenyan -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 (all icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 100% standalone – ALL CSS + JS merged & enhanced -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
     <style>
         /* ========== ASHEN BITES – ENHANCED KENYAN STREET EDITION ========== */
         /* ----- GLOBAL DESIGN VARIABLES (VIBRANT KENYAN PALETTE) ----- */
@@ -103,7 +105,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Kenyan pattern overlay */
+        /* Kenyan pattern overlay - REPLACE WITH YOUR OWN BACKGROUND */
         body::before {
             content: '';
             position: fixed;
@@ -111,10 +113,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(0, 168, 150, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 40% 80%, rgba(255, 209, 102, 0.02) 0%, transparent 30%);
+            background-image: url('images/bg-pattern.png');
+            background-repeat: repeat;
+            opacity: 0.05;
             pointer-events: none;
             z-index: -1;
         }
@@ -860,11 +861,16 @@
             <div class="hero-visual">
                 <div class="food-showcase">
                     <div class="main-dish">
-                        <img src="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Nyama Choma" loading="lazy">
+                        <!-- REPLACE WITH YOUR OWN HERO IMAGE -->
+                        <img src="images/hero-main.jpg" alt="Nyama Choma - Ashen Bites" loading="lazy">
                     </div>
                     <div class="dish-gallery">
-                        <div class="gallery-item"><img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Smocha"></div>
-                        <div class="gallery-item"><img src="https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mutura"></div>
+                        <div class="gallery-item">
+                            <img src="images/smocha.jpg" alt="Classic Smocha - Ashen Bites">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/mutura.jpg" alt="Premium Mutura - Ashen Bites">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -913,22 +919,22 @@
                     <button class="step-action" id="step1Btn" style="background:var(--gradient-sunset); border:3px solid black; border-radius:60px; padding:12px 20px; color:white; font-weight:700;">MENU</button>
                 </div>
                 <div class="step-card" style="background:white; padding:30px; border-radius:60px 20px; border:4px solid black; flex:1; min-width:200px;">
-                    <span class="step-number">2</span>
+                    <span class="step-number" style="background:var(--gradient-sunset); width:50px; height:50px; display:flex; border-radius:50%; align-items:center; justify-content:center; color:white; font-weight:800; margin:0 auto 20px;">2</span>
                     <i class="fas fa-cart-plus" style="font-size:2.5rem; color:var(--sunset-orange);"></i>
                     <h3>Cart</h3>
-                    <button class="step-action" id="viewCartBtn">VIEW</button>
+                    <button class="step-action" id="viewCartBtn" style="background:var(--gradient-sunset); border:3px solid black; border-radius:60px; padding:12px 20px; color:white; font-weight:700;">VIEW</button>
                 </div>
                 <div class="step-card" style="background:white; padding:30px; border-radius:60px 20px; border:4px solid black; flex:1; min-width:200px;">
-                    <span class="step-number">3</span>
+                    <span class="step-number" style="background:var(--gradient-sunset); width:50px; height:50px; display:flex; border-radius:50%; align-items:center; justify-content:center; color:white; font-weight:800; margin:0 auto 20px;">3</span>
                     <i class="fas fa-cc-mpesa" style="font-size:2.5rem; color:green;"></i>
                     <h3>Lipa na M-Pesa</h3>
-                    <button class="step-action" id="checkoutProcessBtn">PAY</button>
+                    <button class="step-action" id="checkoutProcessBtn" style="background:var(--gradient-sunset); border:3px solid black; border-radius:60px; padding:12px 20px; color:white; font-weight:700;">PAY</button>
                 </div>
                 <div class="step-card" style="background:white; padding:30px; border-radius:60px 20px; border:4px solid black; flex:1; min-width:200px;">
-                    <span class="step-number">4</span>
+                    <span class="step-number" style="background:var(--gradient-sunset); width:50px; height:50px; display:flex; border-radius:50%; align-items:center; justify-content:center; color:white; font-weight:800; margin:0 auto 20px;">4</span>
                     <i class="fas fa-motorcycle" style="font-size:2.5rem; color:var(--teal-green);"></i>
                     <h3>Pika & Deliver</h3>
-                    <button class="step-action" id="trackOrderBtn">TRACK</button>
+                    <button class="step-action" id="trackOrderBtn" style="background:var(--gradient-sunset); border:3px solid black; border-radius:60px; padding:12px 20px; color:white; font-weight:700;">TRACK</button>
                 </div>
             </div>
         </div>
@@ -940,15 +946,15 @@
             <div class="payment-info">
                 <h2 style="font-size:2.5rem;">💳 MPESA TILL</h2>
                 <div class="payment-methods" style="margin-top:30px;">
-                    <div class="method-card active" id="mpesaMethod" style="display:flex; gap:20px; padding:20px; background:white; border:4px solid black; border-radius:30px; margin-bottom:15px;">
+                    <div class="method-card active" id="mpesaMethod" style="display:flex; gap:20px; padding:20px; background:white; border:4px solid black; border-radius:30px; margin-bottom:15px; cursor:pointer;">
                         <i class="fas fa-cc-mpesa" style="font-size:2.5rem; color:green;"></i>
                         <div><h4>M-PESA</h4><p>Paybill 523523 • Ashen</p></div>
                     </div>
-                    <div class="method-card" id="cardMethod" style="display:flex; gap:20px; padding:20px; background:white; border:4px solid black; border-radius:30px; margin-bottom:15px;">
+                    <div class="method-card" id="cardMethod" style="display:flex; gap:20px; padding:20px; background:white; border:4px solid black; border-radius:30px; margin-bottom:15px; cursor:pointer;">
                         <i class="fas fa-credit-card" style="font-size:2.5rem;"></i>
                         <div><h4>Card</h4><p>Visa/Mastercard</p></div>
                     </div>
-                    <div class="method-card" id="cashMethod" style="display:flex; gap:20px; padding:20px; background:white; border:4px solid black; border-radius:30px;">
+                    <div class="method-card" id="cashMethod" style="display:flex; gap:20px; padding:20px; background:white; border:4px solid black; border-radius:30px; cursor:pointer;">
                         <i class="fas fa-money-bill-wave" style="font-size:2.5rem;"></i>
                         <div><h4>Cash on delivery</h4></div>
                     </div>
@@ -958,21 +964,21 @@
                 <form id="paymentForm">
                     <h3><i class="fas fa-lock"></i> Complete details</h3>
                     <div style="margin-bottom:15px;">
-                        <input type="text" id="customerName" placeholder="Full name" required style="width:100%; padding:15px; border:4px solid black; border-radius:60px;">
+                        <input type="text" id="customerName" placeholder="Full name" required style="width:100%; padding:15px; border:4px solid black; border-radius:60px; font-family:var(--font-body);">
                     </div>
                     <div style="margin-bottom:15px;">
-                        <input type="tel" id="customerPhone" placeholder="07XX XXX XXX" required style="width:100%; padding:15px; border:4px solid black; border-radius:60px;">
+                        <input type="tel" id="customerPhone" placeholder="07XX XXX XXX" required style="width:100%; padding:15px; border:4px solid black; border-radius:60px; font-family:var(--font-body);">
                     </div>
                     <div style="margin-bottom:15px;">
-                        <textarea id="deliveryAddress" placeholder="Address / Landmark" rows="2" style="width:100%; padding:15px; border:4px solid black; border-radius:30px;"></textarea>
+                        <textarea id="deliveryAddress" placeholder="Address / Landmark" rows="2" style="width:100%; padding:15px; border:4px solid black; border-radius:30px; font-family:var(--font-body);"></textarea>
                     </div>
                     <div id="mpesaFields" style="display:block; margin-bottom:15px;">
-                        <input type="tel" id="mpesaNumber" placeholder="M-Pesa number (2547...)" style="width:100%; padding:15px; border:4px solid black; border-radius:60px;">
+                        <input type="tel" id="mpesaNumber" placeholder="M-Pesa number (2547...)" style="width:100%; padding:15px; border:4px solid black; border-radius:60px; font-family:var(--font-body);">
                     </div>
                     <div class="payment-summary" style="background:var(--off-white); padding:20px; border-radius:30px; margin:20px 0; border:4px solid black;">
                         <div style="display:flex; justify-content:space-between;">Subtotal: Ksh <span class="order-total">0</span></div>
                         <div style="display:flex; justify-content:space-between;">Delivery: Ksh 150</div>
-                        <div style="display:flex; justify-content:space-between; font-weight:800;">Total: Ksh <span class="amount-total">150</span></div>
+                        <div style="display:flex; justify-content:space-between; font-weight:800; font-size:1.3rem;">Total: Ksh <span class="amount-total">150</span></div>
                     </div>
                     <button type="submit" class="btn-pay" id="submitPaymentBtn"><i class="fas fa-cc-mpesa"></i> LIPA NA MPESA</button>
                 </form>
@@ -984,11 +990,18 @@
     <section class="testimonials-section">
         <div class="container">
             <h2 style="text-align:center; font-size:2.5rem;">WA NAIROBI WANASEMA</h2>
-            <div class="testimonials-slider" id="testimonialsSlider">
+            <div class="testimonials-slider" id="testimonialsSlider" style="max-width:800px; margin:0 auto;">
                 <div class="testimonial active">
-                    <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testimonial-text">"Best smocha in Eastlands! Always hot, fresh, and that kachumbari is perfect."</p>
-                    <div class="testimonial-author"><h4>Sarah Mwende</h4><span>Githurai</span></div>
+                    <div class="rating" style="color:var(--golden-yellow); font-size:1.5rem; margin-bottom:20px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text" style="font-size:1.2rem; font-style:italic;">"Best smocha in Eastlands! Always hot, fresh, and that kachumbari is perfect."</p>
+                    <div class="testimonial-author" style="display:flex; align-items:center; gap:20px; justify-content:center; margin-top:30px;">
+                        <div>
+                            <h4 style="margin-bottom:5px;">Sarah Mwende</h4>
+                            <span style="color:var(--medium-gray);">Githurai · 50+ orders</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -997,17 +1010,30 @@
     <!-- ========== ABOUT & CONTACT ========== -->
     <section class="about-section" id="about">
         <div class="container">
-            <div class="about-content" style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
-                <div class="about-image">
-                    <img src="https://images.pexels.com/photos/1552641/pexels-photo-1552641.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Our kitchen" style="width:100%; border-radius:60px; border:8px solid black;">
+            <div class="about-content" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+                <div class="about-image" style="position:relative;">
+                    <!-- REPLACE WITH YOUR OWN KITCHEN/TEAM PHOTO -->
+                    <img src="images/about-kitchen.jpg" alt="Ashen Bites kitchen - Githurai 44" style="width:100%; border-radius:60px; border:8px solid black;">
+                    <div class="about-badge" style="position:absolute; bottom:30px; left:30px; background:var(--gradient-sunset); color:white; padding:15px 30px; border-radius:60px; border:3px solid black; font-weight:700;">
+                        <span><i class="fas fa-heart"></i> Family Owned Since 2020</span>
+                    </div>
                 </div>
                 <div class="about-text">
-                    <h3>Family owned since 2020</h3>
-                    <p>We started as a small street stall in Githurai 44. Today we deliver the same authentic flavors across Nairobi.</p>
+                    <h3 style="font-size:2.2rem; margin-bottom:20px; background:var(--gradient-sunset); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">From Githurai, with love</h3>
+                    <p style="font-size:1.1rem; margin-bottom:30px;">We started as a small street stall in Githurai 44. Today we deliver the same authentic flavors across Nairobi — same recipe, same jiko, same passion.</p>
                     <div class="about-features" style="display:flex; gap:20px;">
-                        <div class="feature"><i class="fas fa-seedling"></i><h4>Fresh</h4></div>
-                        <div class="feature"><i class="fas fa-award"></i><h4>Quality</h4></div>
-                        <div class="feature"><i class="fas fa-truck"></i><h4>Fast</h4></div>
+                        <div style="text-align:center; padding:20px; background:var(--off-white); border-radius:30px; border:3px solid black; flex:1;">
+                            <i class="fas fa-seedling" style="font-size:2rem; color:var(--sukuma-green); margin-bottom:10px;"></i>
+                            <h4 style="font-size:1.1rem;">Fresh daily</h4>
+                        </div>
+                        <div style="text-align:center; padding:20px; background:var(--off-white); border-radius:30px; border:3px solid black; flex:1;">
+                            <i class="fas fa-award" style="font-size:2rem; color:var(--sunset-orange); margin-bottom:10px;"></i>
+                            <h4 style="font-size:1.1rem;">Quality assured</h4>
+                        </div>
+                        <div style="text-align:center; padding:20px; background:var(--off-white); border-radius:30px; border:3px solid black; flex:1;">
+                            <i class="fas fa-truck" style="font-size:2rem; color:var(--teal-green); margin-bottom:10px;"></i>
+                            <h4 style="font-size:1.1rem;">Fast delivery</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1017,54 +1043,195 @@
     <!-- ========== FOOTER ========== -->
     <footer class="footer" id="contact">
         <div class="container">
-            <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
-                <div><i class="fas fa-phone"></i> 0746 562072 | <i class="fab fa-whatsapp"></i> 0788 403734</div>
-                <div>© 2025 Ashen Bites · Githurai 44</div>
+            <div style="display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center; margin-bottom:40px;">
+                <div>
+                    <div class="logo" style="color:white; margin-bottom:20px;">
+                        <div class="logo-icon" style="background:var(--gradient-sunset);"><i class="fas fa-fire"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main" style="color:white; -webkit-text-fill-color:white;">ASHEN</span>
+                            <span class="logo-sub" style="color:#f6e1c5;">BITES · NAIROBI</span>
+                        </div>
+                    </div>
+                    <p style="color:#f6e1c5; max-width:300px;">Bringing authentic Kenyan street food to your doorstep. Smocha, Mutura & more since 2020.</p>
+                </div>
+                <div>
+                    <h4 style="color:white; margin-bottom:20px;">Contact us</h4>
+                    <p style="color:#f6e1c5; margin-bottom:10px;"><i class="fas fa-phone" style="color:var(--matatu-yellow);"></i> 0746 562072</p>
+                    <p style="color:#f6e1c5; margin-bottom:10px;"><i class="fab fa-whatsapp" style="color:var(--matatu-yellow);"></i> 0788 403734</p>
+                    <p style="color:#f6e1c5;"><i class="fas fa-map-marker-alt" style="color:var(--matatu-yellow);"></i> Githurai 44, Kamiti Road</p>
+                </div>
+                <div>
+                    <h4 style="color:white; margin-bottom:20px;">Follow us</h4>
+                    <div style="display:flex; gap:15px;">
+                        <a href="#" style="color:white; background:rgba(255,255,255,0.1); width:45px; height:45px; border-radius:50%; display:flex; align-items:center; justify-content:center;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color:white; background:rgba(255,255,255,0.1); width:45px; height:45px; border-radius:50%; display:flex; align-items:center; justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color:white; background:rgba(255,255,255,0.1); width:45px; height:45px; border-radius:50%; display:flex; align-items:center; justify-content:center;"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; text-align:center;">
+                <p style="color:rgba(255,255,255,0.5);">© 2025 Ashen Bites · All rights reserved · Crafted with <i class="fas fa-heart" style="color:#ff6b8b;"></i> in Nairobi</p>
             </div>
         </div>
     </footer>
 
     <!-- ========== MODALS ========== -->
     <div class="modal" id="mpesaModal">
-        <div class="modal-content">
-            <h3><i class="fas fa-cc-mpesa" style="color:green;"></i> M-PESA STK Push</h3>
-            <p>Enter the 6-digit confirmation code</p>
-            <input id="mpesaCode" placeholder="e.g. 123456" style="width:100%; padding:15px; border:4px solid black; border-radius:60px; margin:20px 0;">
-            <button id="confirmMpesa" style="background:#4CAF50; padding:15px 30px; border-radius:60px; border:4px solid black; font-weight:800; width:100%;">CONFIRM PAYMENT</button>
-            <button id="cancelMpesa" style="background:#ccc; padding:10px 20px; border-radius:60px; margin-top:15px;">CANCEL</button>
+        <div class="modal-content" style="text-align:center;">
+            <h3 style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:20px;"><i class="fas fa-cc-mpesa" style="color:green; font-size:2rem;"></i> M-PESA STK Push</h3>
+            <p style="margin-bottom:20px;">Enter the 6-digit confirmation code sent to your phone</p>
+            <input id="mpesaCode" placeholder="e.g. 123456" style="width:100%; padding:15px; border:4px solid black; border-radius:60px; margin-bottom:20px; font-size:1.2rem; text-align:center;">
+            <button id="confirmMpesa" style="background:#4CAF50; color:white; padding:15px 30px; border-radius:60px; border:4px solid black; font-weight:800; width:100%; font-size:1.1rem; cursor:pointer; margin-bottom:10px;">CONFIRM PAYMENT</button>
+            <button id="cancelMpesa" style="background:#ccc; padding:12px 25px; border-radius:60px; border:3px solid black; font-weight:600; cursor:pointer;">CANCEL</button>
         </div>
     </div>
 
     <div class="modal" id="orderSuccessModal">
-        <div class="modal-content success-modal">
-            <h2>🍖 ORDER IMEKWAMBA!</h2>
-            <div id="orderDetails"></div>
-            <button id="continueShoppingBtn" style="background:var(--sunset-orange); border:4px solid black; padding:16px 32px; border-radius:60px; color:white; font-weight:800; margin-top:20px;">🔁 CONTINUE</button>
+        <div class="modal-content success-modal" style="text-align:center;">
+            <div style="font-size:4rem; color:var(--sukuma-green); margin-bottom:20px;"><i class="fas fa-check-circle"></i></div>
+            <h2 style="margin-bottom:20px;">🍖 ORDER IMEKWAMBA!</h2>
+            <div id="orderDetails" style="margin-bottom:30px;"></div>
+            <button id="continueShoppingBtn" style="background:var(--sunset-orange); border:4px solid black; padding:16px 32px; border-radius:60px; color:white; font-weight:800; font-size:1.1rem; cursor:pointer;">🔁 CONTINUE SHOPPING</button>
         </div>
     </div>
 
     <div class="modal" id="loadingModal">
-        <div class="modal-content loading-modal">
-            <div class="loader" style="text-align:center;"><div class="loader-spinner" style="width:60px; height:60px; border:6px solid #f3f3f3; border-top:6px solid var(--sunset-orange); border-radius:50%; animation:spin 1s linear infinite;"></div><p>Processing ...</p></div>
+        <div class="modal-content loading-modal" style="text-align:center;">
+            <div class="loader" style="text-align:center;">
+                <div class="loader-spinner" style="width:70px; height:70px; border:8px solid #f3f3f3; border-top:8px solid var(--sunset-orange); border-radius:50%; animation:spin 1s linear infinite; margin:0 auto 20px;"></div>
+                <p style="font-size:1.2rem; font-weight:600;">Processing your order...</p>
+            </div>
         </div>
     </div>
 
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- ========== ENHANCED JAVASCRIPT – FULL FUNCTIONALITY ========== -->
+    <!-- ========== ENHANCED JAVASCRIPT – FULL FUNCTIONALITY WITH LOCAL IMAGES ========== -->
     <script>
         (function(){
             "use strict";
-            // ---------- KENYAN MENU DATA (ENHANCED) ----------
+            // ---------- KENYAN MENU DATA WITH YOUR LOCAL IMAGES ----------
             const menuData = [
-                { id:1, name:"Classic Smocha Deluxe", description:"Minced beef, secret spices, fresh chapo + kachumbari", price:150, originalPrice:180, category:"smocha", image:"https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"15min", spiceLevel:"🔥🔥", rating:4.8, popular:true, calories:"450 kcal", ingredients:["Minced Meat","Secret Spices","Chapati","Kachumbari"] },
-                { id:2, name:"Premium Mutura Feast", description:"Grilled blood sausage, herbs, ugali & kachumbari", price:250, originalPrice:300, category:"grilled", image:"https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"20min", spiceLevel:"🔥🔥🔥", rating:4.9, popular:true, calories:"550 kcal", ingredients:["Blood Sausage","Herbs","Kachumbari","Ugali"] },
-                { id:3, name:"Chips Mwitu Special", description:"Crispy fries with beef stew, maharagwe, kachumbari", price:350, originalPrice:400, category:"snacks", image:"https://images.pexels.com/photos/1893556/pexels-photo-1893556.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"25min", spiceLevel:"🔥", rating:4.7, popular:false, calories:"600 kcal", ingredients:["Potatoes","Beef Stew","Vegetables"] },
-                { id:4, name:"Grilled Chicken Platter", description:"Tender kienyeji chicken, roast veggies, kachumbari", price:400, originalPrice:450, category:"grilled", image:"https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"30min", spiceLevel:"🔥🔥", rating:4.8, popular:true, calories:"500 kcal" },
-                { id:5, name:"Vegetable Smocha", description:"Mixed veg, chapo, tangy tomato sauce", price:120, originalPrice:150, category:"smocha", image:"https://images.pexels.com/photos/1647163/pexels-photo-1647163.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"12min", spiceLevel:"🌶️", rating:4.5, popular:false, calories:"350 kcal" },
-                { id:6, name:"Fresh Juice Combo", description:"Passion / Mango / Orange", price:80, originalPrice:100, category:"drinks", image:"https://images.pexels.com/photos/775032/pexels-photo-775032.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"5min", spiceLevel:"None", rating:4.8, popular:true, calories:"120 kcal" },
-                { id:7, name:"Nyama Choma Platter", description:"500g beef mbuzi, kachumbari, ugali", price:500, originalPrice:600, category:"grilled", image:"https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"35min", spiceLevel:"🔥🔥", rating:4.9, popular:true, calories:"700 kcal" },
-                { id:8, name:"Fruit Salad Bowl", description:"Seasonal fruits, yogurt, honey", price:200, originalPrice:250, category:"snacks", image:"https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=600", prepTime:"10min", spiceLevel:"None", rating:4.6, popular:false, calories:"250 kcal" }
+                {
+                    id: 1,
+                    name: "Classic Smocha Deluxe",
+                    description: "Minced beef, secret spices, fresh chapo + kachumbari",
+                    price: 150,
+                    originalPrice: 180,
+                    category: "smocha",
+                    image: "images/smocha.jpg",  // ← YOUR IMAGE
+                    prepTime: "15min",
+                    spiceLevel: "🔥🔥",
+                    rating: 4.8,
+                    popular: true,
+                    calories: "450 kcal",
+                    ingredients: ["Minced Meat", "Secret Spices", "Chapati", "Kachumbari"]
+                },
+                {
+                    id: 2,
+                    name: "Premium Mutura Feast",
+                    description: "Grilled blood sausage, herbs, ugali & kachumbari",
+                    price: 250,
+                    originalPrice: 300,
+                    category: "grilled",
+                    image: "images/mutura.jpg",  // ← YOUR IMAGE
+                    prepTime: "20min",
+                    spiceLevel: "🔥🔥🔥",
+                    rating: 4.9,
+                    popular: true,
+                    calories: "550 kcal",
+                    ingredients: ["Blood Sausage", "Herbs", "Kachumbari", "Ugali"]
+                },
+                {
+                    id: 3,
+                    name: "Chips Mwitu Special",
+                    description: "Crispy fries with beef stew, maharagwe, kachumbari",
+                    price: 350,
+                    originalPrice: 400,
+                    category: "snacks",
+                    image: "images/chips-mwitu.jpg",  // ← YOUR IMAGE
+                    prepTime: "25min",
+                    spiceLevel: "🔥",
+                    rating: 4.7,
+                    popular: false,
+                    calories: "600 kcal",
+                    ingredients: ["Potatoes", "Beef Stew", "Vegetables"]
+                },
+                {
+                    id: 4,
+                    name: "Grilled Chicken Platter",
+                    description: "Tender kienyeji chicken, roast veggies, kachumbari",
+                    price: 400,
+                    originalPrice: 450,
+                    category: "grilled",
+                    image: "images/chicken-platter.jpg",  // ← YOUR IMAGE
+                    prepTime: "30min",
+                    spiceLevel: "🔥🔥",
+                    rating: 4.8,
+                    popular: true,
+                    calories: "500 kcal",
+                    ingredients: ["Chicken", "Traditional Spices", "Roasted Vegetables"]
+                },
+                {
+                    id: 5,
+                    name: "Vegetable Smocha",
+                    description: "Mixed veg, chapo, tangy tomato sauce",
+                    price: 120,
+                    originalPrice: 150,
+                    category: "smocha",
+                    image: "images/veg-smocha.jpg",  // ← YOUR IMAGE
+                    prepTime: "12min",
+                    spiceLevel: "🌶️",
+                    rating: 4.5,
+                    popular: false,
+                    calories: "350 kcal",
+                    ingredients: ["Mixed Vegetables", "Spices", "Chapati", "Tomato Sauce"]
+                },
+                {
+                    id: 6,
+                    name: "Fresh Juice Combo",
+                    description: "Passion / Mango / Orange - your choice!",
+                    price: 80,
+                    originalPrice: 100,
+                    category: "drinks",
+                    image: "images/juice.jpg",  // ← YOUR IMAGE
+                    prepTime: "5min",
+                    spiceLevel: "None",
+                    rating: 4.8,
+                    popular: true,
+                    calories: "120 kcal",
+                    ingredients: ["Fresh Fruits", "Ice", "Mint"]
+                },
+                {
+                    id: 7,
+                    name: "Nyama Choma Platter",
+                    description: "500g beef mbuzi, kachumbari, ugali",
+                    price: 500,
+                    originalPrice: 600,
+                    category: "grilled",
+                    image: "images/nyama-choma.jpg",  // ← YOUR IMAGE
+                    prepTime: "35min",
+                    spiceLevel: "🔥🔥",
+                    rating: 4.9,
+                    popular: true,
+                    calories: "700 kcal",
+                    ingredients: ["Beef", "Traditional Spices", "Kachumbari", "Ugali"]
+                },
+                {
+                    id: 8,
+                    name: "Fruit Salad Bowl",
+                    description: "Fresh seasonal fruits with yogurt & honey",
+                    price: 200,
+                    originalPrice: 250,
+                    category: "snacks",
+                    image: "images/fruit-salad.jpg",  // ← YOUR IMAGE
+                    prepTime: "10min",
+                    spiceLevel: "None",
+                    rating: 4.6,
+                    popular: false,
+                    calories: "250 kcal",
+                    ingredients: ["Seasonal Fruits", "Yogurt", "Honey", "Mint"]
+                }
             ];
 
             // ---------- CART & STATE ----------
@@ -1094,81 +1261,152 @@
                 toastContainer.appendChild(toast);
                 setTimeout(() => toast.remove(), 3500);
             }
-            function saveCart() { localStorage.setItem('ashenBitesCart', JSON.stringify(cart)); updateCartCount(); }
+            
+            function saveCart() { 
+                localStorage.setItem('ashenBitesCart', JSON.stringify(cart)); 
+                updateCartCount(); 
+            }
+            
             function updateCartCount() { 
                 let total = cart.reduce((sum, i) => sum + i.quantity, 0); 
                 if (cartCount) cartCount.textContent = total; 
             }
+            
             function calculateTotals() {
                 let sub = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
                 let delivery = sub > 0 ? 150 : 0;
                 let disc = (appliedPromo && sub >= 1000) ? Math.round(sub * 0.2) : 0;
                 return { subtotal: sub, delivery, discount: disc, total: sub + delivery - disc };
             }
+            
             function renderCart() {
                 if (!cartItemsDiv) return;
                 if (cart.length === 0) { 
-                    cartItemsDiv.innerHTML = '<div class="cart-empty" style="padding:40px; text-align:center;">Kikapu iko empty · add delicacies 🍖</div>'; 
+                    cartItemsDiv.innerHTML = '<div class="cart-empty" style="padding:40px; text-align:center;"><i class="fas fa-shopping-basket" style="font-size:3rem; color:var(--medium-gray); margin-bottom:20px;"></i><h4 style="margin-bottom:10px;">Kikapu iko empty</h4><p style="color:var(--medium-gray);">Add some delicious Kenyan bites!</p></div>'; 
                     if (cartSummaryDiv) cartSummaryDiv.innerHTML = '';
                     return; 
                 }
+                
                 let html = '';
                 cart.forEach(item => {
                     html += `<div class="cart-item">
-                                <div><img src="${item.image}" width="60" height="60" style="border-radius:20px; border:3px solid black;"></div>
-                                <div style="flex:1;"><strong>${item.name}</strong> x${item.quantity} <br> Ksh ${item.price * item.quantity}</div>
-                                <button class="remove-item" data-id="${item.id}" style="background:none; border:none; color:red; font-size:1.5rem;"><i class="fas fa-trash"></i></button>
+                                <div><img src="${item.image}" width="70" height="70" style="border-radius:20px; border:3px solid black; object-fit:cover;"></div>
+                                <div style="flex:1; padding-left:10px;">
+                                    <strong style="font-size:1.1rem;">${item.name}</strong>
+                                    <div style="display:flex; justify-content:space-between; margin-top:8px;">
+                                        <span>Ksh ${item.price} × ${item.quantity}</span>
+                                        <span style="font-weight:800; color:var(--sunset-orange);">Ksh ${item.price * item.quantity}</span>
+                                    </div>
+                                </div>
+                                <button class="remove-item" data-id="${item.id}" style="background:none; border:none; color:var(--nyama-red); font-size:1.3rem; cursor:pointer;"><i class="fas fa-trash"></i></button>
                             </div>`;
                 });
                 cartItemsDiv.innerHTML = html;
+                
                 let totals = calculateTotals();
-                if (cartSummaryDiv) cartSummaryDiv.innerHTML = `<div style="background:black; color:white; padding:20px; border-radius:40px; margin-top:20px;">
-                    <div style="display:flex; justify-content:space-between;">Subtotal: Ksh ${totals.subtotal}</div>
-                    <div style="display:flex; justify-content:space-between;">Delivery: Ksh 150</div>
-                    <div style="display:flex; justify-content:space-between; font-size:1.4rem; font-weight:800;">Total: Ksh ${totals.total}</div>
-                </div>`;
+                if (cartSummaryDiv) {
+                    cartSummaryDiv.innerHTML = `<div style="background:var(--githurai-brown); color:white; padding:25px; border-radius:40px; margin-top:20px; border:4px solid var(--matatu-yellow);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <span>Subtotal:</span>
+                            <span style="font-weight:700;">Ksh ${totals.subtotal}</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <span>Delivery:</span>
+                            <span style="font-weight:700;">Ksh 150</span>
+                        </div>
+                        ${totals.discount > 0 ? `
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; color:var(--matatu-yellow);">
+                            <span>Discount (20%):</span>
+                            <span style="font-weight:700;">-Ksh ${totals.discount}</span>
+                        </div>` : ''}
+                        <div style="display:flex; justify-content:space-between; margin-top:15px; padding-top:15px; border-top:2px solid rgba(255,255,255,0.2); font-size:1.3rem;">
+                            <span style="font-weight:800;">TOTAL:</span>
+                            <span style="font-weight:800; color:var(--matatu-yellow);">Ksh ${totals.total}</span>
+                        </div>
+                    </div>`;
+                }
+                
                 // attach remove events
                 document.querySelectorAll('.remove-item').forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         let id = e.currentTarget.dataset.id;
                         cart = cart.filter(i => i.id != id);
-                        saveCart(); renderCart(); showToast('Item removed', 'warning');
+                        saveCart(); 
+                        renderCart(); 
+                        showToast('Item removed from cart', 'warning');
                     });
                 });
             }
+            
             function addToCart(id) {
                 let dish = menuData.find(d => d.id == id);
                 if (!dish) return;
                 let existing = cart.find(i => i.id == id);
                 if (existing) existing.quantity += 1;
                 else cart.push({ ...dish, quantity: 1 });
-                saveCart(); renderCart(); showToast(`➕ ${dish.name} added`, 'success');
+                saveCart(); 
+                renderCart(); 
+                showToast(`➕ ${dish.name} added to cart`, 'success');
             }
+            
             // render featured dishes
             function renderFeatured() {
                 if (!dishesGrid) return;
                 let featured = menuData.filter(d => d.popular).slice(0, 3);
                 dishesGrid.innerHTML = featured.map(d => `
                     <div class="dish-card">
-                        <div class="dish-image"><img src="${d.image}" loading="lazy"><span class="dish-tag">POPULAR</span>
-                        <button class="quick-view" data-id="${d.id}"><i class="fas fa-eye"></i></button></div>
-                        <div class="dish-content"><h3 class="dish-title">${d.name}</h3>
-                        <p>${d.description}</p><div class="dish-footer">
-                        <span class="price current">Ksh ${d.price}</span>
-                        <button class="add-to-cart" data-id="${d.id}"><i class="fas fa-cart-plus"></i> ORDER</button></div></div>
+                        <div class="dish-image">
+                            <img src="${d.image}" loading="lazy" alt="${d.name}">
+                            <span class="dish-tag">POPULAR</span>
+                            <button class="quick-view" data-id="${d.id}"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <div class="dish-content">
+                            <h3 class="dish-title">${d.name}</h3>
+                            <p class="dish-description">${d.description}</p>
+                            <div class="dish-meta">
+                                <span><i class="fas fa-clock"></i> ${d.prepTime}</span>
+                                <span><i class="fas fa-pepper-hot"></i> ${d.spiceLevel}</span>
+                                <span><i class="fas fa-star"></i> ${d.rating}</span>
+                            </div>
+                            <div class="dish-footer">
+                                <div class="price">
+                                    <span class="current">Ksh ${d.price}</span>
+                                    ${d.originalPrice ? `<span class="old">Ksh ${d.originalPrice}</span>` : ''}
+                                </div>
+                                <button class="add-to-cart" data-id="${d.id}">
+                                    <i class="fas fa-cart-plus"></i> ORDER
+                                </button>
+                            </div>
+                        </div>
                     </div>`).join('');
             }
+            
             // render menu with filter
             function renderMenu(filter = 'all') {
                 if (!menuGrid) return;
                 let filtered = filter === 'all' ? menuData : menuData.filter(d => d.category === filter);
                 menuGrid.innerHTML = filtered.map(d => `
                     <div class="menu-item">
-                        <div class="menu-item-image"><img src="${d.image}" loading="lazy">${d.popular ? '<span class="popular-badge">⭐ POPULAR</span>' : ''}
-                        <button class="quick-view-btn" data-id="${d.id}"><i class="fas fa-eye"></i></button></div>
-                        <div class="menu-item-content"><h3>${d.name}</h3><p>${d.description}</p>
-                        <div class="menu-item-footer"><span class="price">Ksh ${d.price}</span>
-                        <button class="add-to-cart-btn" data-id="${d.id}"><i class="fas fa-cart-plus"></i> NIPE</button></div></div>
+                        <div class="menu-item-image">
+                            <img src="${d.image}" loading="lazy" alt="${d.name}">
+                            ${d.popular ? '<span class="popular-badge">⭐ POPULAR</span>' : ''}
+                            <button class="quick-view-btn" data-id="${d.id}"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 style="font-size:1.3rem;">${d.name}</h3>
+                            <p style="color:var(--medium-gray); margin:10px 0;">${d.description}</p>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
+                                <span style="background:var(--off-white); padding:5px 15px; border-radius:30px; font-size:0.85rem;"><i class="fas fa-clock"></i> ${d.prepTime}</span>
+                                <span style="background:var(--off-white); padding:5px 15px; border-radius:30px; font-size:0.85rem;"><i class="fas fa-pepper-hot"></i> ${d.spiceLevel}</span>
+                                <span style="background:var(--off-white); padding:5px 15px; border-radius:30px; font-size:0.85rem;"><i class="fas fa-fire"></i> ${d.calories}</span>
+                            </div>
+                            <div class="menu-item-footer">
+                                <span class="price">Ksh ${d.price}</span>
+                                <button class="add-to-cart-btn" data-id="${d.id}">
+                                    <i class="fas fa-cart-plus"></i> NIPE
+                                </button>
+                            </div>
+                        </div>
                     </div>`).join('');
             }
 
@@ -1178,9 +1416,11 @@
                     let btn = e.target.closest('[data-id]');
                     if (btn) addToCart(btn.dataset.id);
                 }
+                
                 if (e.target.closest('.quick-view') || e.target.closest('.quick-view-btn')) {
                     let id = e.target.closest('[data-id]').dataset.id;
-                    showToast(`🔍 ${menuData.find(d=>d.id==id)?.name} — ready`, 'info');
+                    let dish = menuData.find(d => d.id == id);
+                    showToast(`🔍 ${dish?.name} — ${dish?.price} Ksh`, 'info');
                 }
             });
 
@@ -1194,12 +1434,21 @@
             });
 
             // cart open/close
-            document.getElementById('cartButton')?.addEventListener('click', () => { cartPanel.classList.add('active'); renderCart(); });
+            document.getElementById('cartButton')?.addEventListener('click', () => { 
+                cartPanel.classList.add('active'); 
+                renderCart(); 
+            });
+            
             document.getElementById('cartClose')?.addEventListener('click', () => cartPanel.classList.remove('active'));
 
             // hero buttons
-            document.getElementById('orderNowBtn')?.addEventListener('click', () => window.scrollTo({ top: document.getElementById('payment').offsetTop - 100, behavior: 'smooth' }));
-            document.getElementById('viewMenuBtn')?.addEventListener('click', () => window.scrollTo({ top: document.getElementById('menu').offsetTop - 80, behavior: 'smooth' }));
+            document.getElementById('orderNowBtn')?.addEventListener('click', () => {
+                window.scrollTo({ top: document.getElementById('payment').offsetTop - 100, behavior: 'smooth' });
+            });
+            
+            document.getElementById('viewMenuBtn')?.addEventListener('click', () => {
+                window.scrollTo({ top: document.getElementById('menu').offsetTop - 80, behavior: 'smooth' });
+            });
 
             // promo
             document.getElementById('applyPromoBtn')?.addEventListener('click', function() {
@@ -1207,9 +1456,14 @@
                 if (totals.subtotal >= 1000 && !appliedPromo) { 
                     appliedPromo = true; 
                     discount = totals.subtotal * 0.2; 
-                    showToast('✅ PROMO 20% off!', 'success'); 
-                    updateCartCount(); renderCart();
-                } else showToast('Min 1000/= or already used', 'warning');
+                    showToast('✅ PROMO APPLIED! 20% discount', 'success'); 
+                    updateCartCount(); 
+                    renderCart();
+                } else if (appliedPromo) {
+                    showToast('Promo already applied', 'info');
+                } else {
+                    showToast('Minimum order Ksh 1000 for promo', 'warning');
+                }
             });
 
             // payment method toggles
@@ -1219,12 +1473,14 @@
                 document.querySelectorAll('.method-card').forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
             });
+            
             document.getElementById('cardMethod')?.addEventListener('click', function() { 
                 currentPaymentMethod = 'card'; 
                 document.getElementById('mpesaFields').style.display = 'none';
                 document.querySelectorAll('.method-card').forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
             });
+            
             document.getElementById('cashMethod')?.addEventListener('click', function() { 
                 currentPaymentMethod = 'cash'; 
                 document.getElementById('mpesaFields').style.display = 'none';
@@ -1235,54 +1491,136 @@
             // payment form
             document.getElementById('paymentForm')?.addEventListener('submit', function(e) {
                 e.preventDefault();
+                
                 let name = document.getElementById('customerName').value.trim();
                 let phone = document.getElementById('customerPhone').value.trim();
-                if (!name || !phone) { showToast('Filling all ni lazima', 'error'); return; }
-                if (cart.length === 0) { showToast('Cart empty, add food', 'error'); return; }
+                let address = document.getElementById('deliveryAddress').value.trim();
+                
+                if (!name || !phone || !address) { 
+                    showToast('Please fill all fields', 'error'); 
+                    return; 
+                }
+                
+                // Kenyan phone validation
+                let phoneRegex = /^(07|01)\d{8}$/;
+                if (!phoneRegex.test(phone)) {
+                    showToast('Enter valid Kenyan number (07XXXXXXXX)', 'error');
+                    return;
+                }
+                
+                if (cart.length === 0) { 
+                    showToast('Cart is empty! Add food first', 'error'); 
+                    return; 
+                }
+                
                 if (currentPaymentMethod === 'mpesa') {
+                    let mpesaPhone = document.getElementById('mpesaNumber').value.trim();
+                    if (!mpesaPhone) {
+                        showToast('Enter M-Pesa number', 'error');
+                        return;
+                    }
                     mpesaModal.classList.add('active');
-                } else { completeOrder(); }
+                } else { 
+                    completeOrder(); 
+                }
             });
 
             function completeOrder() {
                 let totals = calculateTotals();
                 let orderId = 'AB' + Date.now().toString().slice(-6);
-                showToast(`✅ Order ${orderId} confirmed! Asante.`, 'success');
-                cart = []; appliedPromo = false; discount = 0; saveCart(); renderCart();
+                let customerName = document.getElementById('customerName')?.value || 'Customer';
+                
+                showToast(`✅ Order ${orderId} confirmed! Asante sana!`, 'success');
+                
+                cart = []; 
+                appliedPromo = false; 
+                discount = 0; 
+                saveCart(); 
+                renderCart();
+                
                 if (orderSuccessModal) {
                     orderSuccessModal.classList.add('active');
                     let orderDetails = document.getElementById('orderDetails');
-                    if (orderDetails) orderDetails.innerHTML = `<p>Order: ${orderId} | Total: Ksh ${totals.total}</p><p>Tuko njiani 🚀</p>`;
+                    if (orderDetails) {
+                        orderDetails.innerHTML = `
+                            <div style="background:var(--off-white); padding:20px; border-radius:30px; border:3px solid black;">
+                                <p style="margin-bottom:10px;"><strong>Order ID:</strong> ${orderId}</p>
+                                <p style="margin-bottom:10px;"><strong>Customer:</strong> ${customerName}</p>
+                                <p style="margin-bottom:10px;"><strong>Total:</strong> Ksh ${totals.total}</p>
+                                <p style="margin-bottom:0;"><strong>Delivery:</strong> 30-45 minutes</p>
+                            </div>
+                        `;
+                    }
                 }
+                
                 cartPanel.classList.remove('active');
+                
+                // Reset form
+                document.getElementById('paymentForm')?.reset();
             }
 
             document.getElementById('confirmMpesa')?.addEventListener('click', function() {
+                let code = document.getElementById('mpesaCode')?.value.trim();
+                if (!code) {
+                    showToast('Enter M-Pesa confirmation code', 'error');
+                    return;
+                }
                 mpesaModal.classList.remove('active');
                 completeOrder();
             });
-            document.getElementById('cancelMpesa')?.addEventListener('click', function() { mpesaModal.classList.remove('active'); });
-            document.getElementById('continueShoppingBtn')?.addEventListener('click', function() { orderSuccessModal.classList.remove('active'); });
+            
+            document.getElementById('cancelMpesa')?.addEventListener('click', function() { 
+                mpesaModal.classList.remove('active'); 
+            });
+            
+            document.getElementById('continueShoppingBtn')?.addEventListener('click', function() { 
+                orderSuccessModal.classList.remove('active'); 
+            });
 
             // step buttons
-            document.getElementById('step1Btn')?.addEventListener('click', () => window.scrollTo({ top: document.getElementById('menu').offsetTop - 80, behavior: 'smooth' }));
-            document.getElementById('viewCartBtn')?.addEventListener('click', () => cartPanel.classList.add('active'));
-            document.getElementById('checkoutProcessBtn')?.addEventListener('click', () => { 
-                if(cart.length>0) window.scrollTo({ top: document.getElementById('payment').offsetTop - 80, behavior: 'smooth' }); 
-                else showToast('Cart empty','warning'); 
+            document.getElementById('step1Btn')?.addEventListener('click', () => {
+                window.scrollTo({ top: document.getElementById('menu').offsetTop - 80, behavior: 'smooth' });
             });
-            document.getElementById('trackOrderBtn')?.addEventListener('click', () => showToast('Track order coming soon!', 'info'));
+            
+            document.getElementById('viewCartBtn')?.addEventListener('click', () => {
+                cartPanel.classList.add('active');
+                renderCart();
+            });
+            
+            document.getElementById('checkoutProcessBtn')?.addEventListener('click', () => { 
+                if(cart.length > 0) {
+                    window.scrollTo({ top: document.getElementById('payment').offsetTop - 80, behavior: 'smooth' }); 
+                } else { 
+                    showToast('Cart is empty! Add some delicacies', 'warning'); 
+                }
+            });
+            
+            document.getElementById('trackOrderBtn')?.addEventListener('click', () => {
+                showToast('Track order feature coming soon!', 'info');
+            });
+
+            // close modals on outside click
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal')) {
+                    e.target.classList.remove('active');
+                }
+            });
+
+            // close cart with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    cartPanel.classList.remove('active');
+                    document.querySelectorAll('.modal.active').forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                }
+            });
 
             // initialize everything
             renderFeatured();
             renderMenu('all');
             updateCartCount();
             renderCart();
-
-            // close modals on outside click
-            window.addEventListener('click', (e) => {
-                if (e.target.classList.contains('modal')) e.target.classList.remove('active');
-            });
         })();
     </script>
 </body>
